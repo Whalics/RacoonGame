@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_0
+      name: Trash_0
       rect:
         serializedVersion: 2
         x: 96
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a76c9d923e222b4ab92e18fe0ee9974
-      internalID: 657182992
+      spriteID: 66d8774a57a77ef4f9ea023ca9b6518c
+      internalID: 806969276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_1
+      name: Trash_1
       rect:
         serializedVersion: 2
         x: 432
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f20b33f5d8b17c64ea1d4a3f2d8e28a4
-      internalID: -393732598
+      spriteID: ecaccb30db4f0474691278247a9643da
+      internalID: 1984554402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_2
+      name: Trash_2
       rect:
         serializedVersion: 2
         x: 811
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40a52792e8da91c4b9b07325fa8fdda2
-      internalID: -317127686
+      spriteID: a52be5218bc110d48ab86d9aada8089b
+      internalID: 566289880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_3
+      name: Trash_3
       rect:
         serializedVersion: 2
         x: 1233
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07e1817d8ac6ba44381f7845065690c5
-      internalID: -1173032033
+      spriteID: 9dfb83e50f3ca384881eaa00014bf28d
+      internalID: -1931005387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_4
+      name: Trash_4
       rect:
         serializedVersion: 2
         x: 50
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33becebf757e5384b8b8555f82b0c9fb
-      internalID: 123947751
+      spriteID: 2cd3231fe1378e446b32c19469940a13
+      internalID: -1522723380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_5
+      name: Trash_5
       rect:
         serializedVersion: 2
         x: 424
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 902ab3b547b3a534691e72961e571483
-      internalID: -850684738
+      spriteID: 80f91d035c9e5d84aa24e6d611858f94
+      internalID: -1207873514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_6
+      name: Trash_6
       rect:
         serializedVersion: 2
         x: 651
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924e9c37d7c644643bb0c3d9480d5933
-      internalID: 663833403
+      spriteID: c174883d38d94714dadc7ec874b1843e
+      internalID: -1118479631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled_Artwork (1)_8
+      name: Trash_8
       rect:
         serializedVersion: 2
         x: 1242
@@ -265,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8478c5d0f03f90a489b766447d3e235f
-      internalID: 175760976
+      spriteID: ce2219b614deaf34b9984253c15692b6
+      internalID: 629783174
       vertices: []
       indices: 
       edges: []
@@ -282,15 +282,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Untitled_Artwork (1)_6: 663833403
-      Untitled_Artwork (1)_3: -1173032033
-      Untitled_Artwork (1)_1: -393732598
-      Untitled_Artwork (1)_2: -317127686
-      Untitled_Artwork (1)_4: 123947751
-      Untitled_Artwork (1)_0: 657182992
-      Untitled_Artwork (1)_5: -850684738
-      Untitled_Artwork (1)_8: 175760976
-      Untitled_Artwork (1)_7: 1959826364
+      Trash_5: -1207873514
+      Trash_0: 806969276
+      Trash_8: 629783174
+      Trash_1: 1984554402
+      Trash_3: -1931005387
+      Trash_2: 566289880
+      Trash_6: -1118479631
+      Trash_7: -447879664
+      Trash_4: -1522723380
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
