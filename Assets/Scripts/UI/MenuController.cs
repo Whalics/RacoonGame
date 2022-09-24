@@ -7,11 +7,55 @@ using DG.Tweening;
 
 public class MenuController : MonoBehaviour
 {
-    public void StartGame(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    public RectTransform pnl_main;
+    public Transform lerpTransform;
+    public GameObject pauseUI;
+    public bool isPaused = false;
+
+    void Start(){
+        pauseUI = GameObject.Find("cnvs_PauseMenu");
+        TitleEnter(pnl_main);
+    }
+
+    void TitleEnter(RectTransform t){
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.AppendInterval(0.4f);
+        mySequence.Append(t.DOAnchorPos(Vector2.zero,0.8f,false).SetEase(Ease.OutBounce));
+    }
+
+    public void StartGame(RectTransform t){
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.AppendInterval(0.4f);
+        mySequence.Append(t.DOAnchorPos(Vector2.up*-1080,0.8f,false).SetEase(Ease.InOutQuint));
+        StartCoroutine(SceneChange("Game"));
+    }
+
+    public IEnumerator SceneChange(string scene){
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(scene);
+    }
+
+    public void Pause(){
+        if(!isPaused){
+            isPaused = true;
+            Time.timeScale = 0f;
+            pauseUI.SetActive(true);
+        }
+        else UnPause();
+    }
+
+    public void UnPause(){
+        pauseUI.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1f;
+    }
+
+    public void MainMenu(){
+        StartCoroutine(SceneChange("MainMenu"));
     }
 
     public void QuitGame(){
         Application.Quit();
-    }
+    }  
 }
