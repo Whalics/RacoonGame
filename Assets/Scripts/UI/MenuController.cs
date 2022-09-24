@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public bool isPaused = false;
 
     void Start(){
-        pauseUI = GameObject.Find("cnvs_PauseMenu");
+       // pauseUI = GameObject.Find("pnl_Paused");
         TitleEnter(pnl_main);
     }
 
@@ -28,11 +28,11 @@ public class MenuController : MonoBehaviour
         Sequence mySequence = DOTween.Sequence();
         mySequence.AppendInterval(0.4f);
         mySequence.Append(t.DOAnchorPos(Vector2.up*-1080,0.8f,false).SetEase(Ease.InOutQuint));
-        StartCoroutine(SceneChange("Game"));
+        StartCoroutine(SceneChange("Game", 1f));
     }
 
-    public IEnumerator SceneChange(string scene){
-        yield return new WaitForSeconds(1f);
+    public IEnumerator SceneChange(string scene, float s){
+        yield return new WaitForSeconds(s);
         SceneManager.LoadScene(scene);
     }
 
@@ -52,7 +52,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void MainMenu(){
-        StartCoroutine(SceneChange("MainMenu"));
+        StartCoroutine(SceneChange("MainMenu",0f));
     }
 
     public void QuitGame(){
