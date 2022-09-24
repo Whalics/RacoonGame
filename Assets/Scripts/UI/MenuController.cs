@@ -15,13 +15,19 @@ public class MenuController : MonoBehaviour
 
     void Start(){
        // pauseUI = GameObject.Find("pnl_Paused");
-        TitleEnter(pnl_main);
+       if(pnl_main != null){
+            pnl_main.GetComponent<CanvasGroup>();
+            TitleEnter();
+
+       }
     }
 
-    void TitleEnter(RectTransform t){
+    void TitleEnter(){
+        Debug.Log("Entered");
         Sequence mySequence = DOTween.Sequence();
+        CanvasGroup grp = pnl_main.GetComponent<CanvasGroup>();
         mySequence.AppendInterval(0.4f);
-        mySequence.Append(t.DOAnchorPos(Vector2.zero,0.8f,false).SetEase(Ease.OutBounce));
+        mySequence.Append(grp.DOFade(1f,1f).SetEase(Ease.OutSine));
     }
 
     public void StartGame(RectTransform t){
@@ -37,12 +43,12 @@ public class MenuController : MonoBehaviour
     }
 
     public void Pause(){
-        if(!isPaused){
+        if(!isPaused && pauseUI != null){
             isPaused = true;
             Time.timeScale = 0f;
             pauseUI.SetActive(true);
         }
-        else UnPause();
+        else if(pauseUI != null) UnPause();
     }
 
     public void UnPause(){
