@@ -26,16 +26,24 @@ public class HandsController : MonoBehaviour
     private Vector3 _mousePrev;
     private Vector3 _mouseOffset;
 
+
+    private SusController suscontroller;
+
     private void OnEnable()
     {
+        suscontroller = GameObject.Find("SusController").GetComponent<SusController>();
         UserInput.Drag += Drag;
     }
+
     private void OnDisable()
     {
         UserInput.Drag -= Drag;
     }
+
     private void Drag(bool drag)
     {
+        suscontroller.IncreaseSus(0.2f);
+
         _drag = drag;
         if (drag)
         {
