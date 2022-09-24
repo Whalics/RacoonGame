@@ -38,27 +38,47 @@ public class MenuController : MonoBehaviour
     }
 
     public IEnumerator SceneChange(string scene, float s){
-        yield return new WaitForSeconds(s);
+        yield return new WaitForSecondsRealtime(s);
+        UnPause();
         SceneManager.LoadScene(scene);
     }
 
     public void Pause(){
-        if(!isPaused && pauseUI != null){
+        CanvasGroup grp;
+        if(pauseUI != null && isPaused){ 
+            UnPause();
+        }
+        else if(!isPaused && pauseUI != null){
             isPaused = true;
             Time.timeScale = 0f;
             pauseUI.SetActive(true);
+            grp = pauseUI.GetComponent<CanvasGroup>();
+            grp.DOFade(1f,0.3f).SetEase(Ease.OutSine).SetUpdate(true);
         }
-        else if(pauseUI != null) UnPause();
     }
 
     public void UnPause(){
-        pauseUI.SetActive(false);
+        CanvasGroup grp;
+        if(pauseUI != null){
+            pauseUI.SetActive(false);
+            grp = pauseUI.GetComponent<CanvasGroup>();
+            grp.DOFade(0f,0.3f).SetEase(Ease.OutSine).SetUpdate(true);
+            StartCoroutine(UnPause2());
+        }
+    }
+    
+    public IEnumerator UnPause2(){
+        yield return new WaitForSecondsRealtime(0.3f);
         isPaused = false;
         Time.timeScale = 1f;
     }
 
-    public void MainMenu(){
-        StartCoroutine(SceneChange("MainMenu",0f));
+
+    public void MainMenu(RectTransform t){
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.AppendInterval(0.4f).SetUpdate(true);
+        mySequence.Append(t.DOAnchorPos(Vector2.up*-1080,0.8f,false).SetEase(Ease.InOutQuint));
+        StartCoroutine(SceneChange("MainMenu",1f));
     }
 
     public void QuitGame(){
