@@ -233,7 +233,7 @@ MonoBehaviour:
   _xAmount: 5
   _yDist: 4.5
   _yAmount: 5
-  _random: 0.75
+  _random: 1.5
   _trashAmount: 25
   _objects:
   - {fileID: 806969276, guid: 8094175803f18c4469b505c63d97336e, type: 3}
@@ -693,6 +693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336084517}
+  - component: {fileID: 1336084518}
   m_Layer: 0
   m_Name: Hands
   m_TagString: Untagged
@@ -717,6 +718,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1336084518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336084516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc0d2a2407b3634e9369f95f0cbe976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraController: {fileID: 519420033}
+  _speed: 18
+  _drag: 0
+  _left: {fileID: 528487915}
+  _leftRest: {x: -6, y: 0, z: 0}
+  _leftDrag: {x: 0, y: 0, z: 0}
+  _right: {fileID: 495184203}
+  _rightRest: {x: 6, y: 0, z: 0}
+  _rightDrag: {x: 0, y: 0, z: 0}
 --- !u!1 &1401057383
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +773,7 @@ MonoBehaviour:
   _xAmount: 5
   _yDist: 4.5
   _yAmount: 5
-  _random: 0.75
+  _random: 1.5
   _trashAmount: 25
   _objects:
   - {fileID: 806969276, guid: 8094175803f18c4469b505c63d97336e, type: 3}
@@ -861,7 +883,7 @@ MonoBehaviour:
   _xAmount: 5
   _yDist: 4.5
   _yAmount: 5
-  _random: 0.75
+  _random: 1.5
   _trashAmount: 25
   _objects:
   - {fileID: 806969276, guid: 8094175803f18c4469b505c63d97336e, type: 3}
@@ -1041,7 +1063,7 @@ MonoBehaviour:
   _xAmount: 5
   _yDist: 4.5
   _yAmount: 5
-  _random: 0.75
+  _random: 1.5
   _trashAmount: 25
   _objects:
   - {fileID: 806969276, guid: 8094175803f18c4469b505c63d97336e, type: 3}
@@ -1101,7 +1123,7 @@ MonoBehaviour:
   _xAmount: 5
   _yDist: 4.5
   _yAmount: 5
-  _random: 0.75
+  _random: 1.5
   _trashAmount: 25
   _objects:
   - {fileID: 806969276, guid: 8094175803f18c4469b505c63d97336e, type: 3}

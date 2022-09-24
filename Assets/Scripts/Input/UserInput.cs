@@ -8,6 +8,7 @@ public class UserInput : MonoBehaviour
     public static Action LookUp = delegate { };
     public static Action LookDown = delegate { };
     public static Action<bool> Hide = delegate { };
+    public static Action<bool> Drag = delegate { };
 
     [SerializeField] private bool _debug;
 
@@ -40,6 +41,13 @@ public class UserInput : MonoBehaviour
         Hide?.Invoke(value.isPressed);
     }
 
+    private void OnDrag(InputValue value)
+    {
+        if (Paused) return;
+        Log("Drag " + value.isPressed);
+        Drag?.Invoke(value.isPressed);
+    }
+    
     private void Log(string m)
     {
         if (_debug) Debug.Log(m, gameObject);

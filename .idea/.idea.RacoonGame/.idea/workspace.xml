@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HandsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PauseMenuController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -68,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664001250217</updated>
       <workItem from="1664001250219" duration="201000" />
-      <workItem from="1664001507656" duration="7073000" />
+      <workItem from="1664001507656" duration="9606000" />
     </task>
     <servers />
   </component>
