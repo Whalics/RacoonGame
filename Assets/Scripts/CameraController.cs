@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using EZCameraShake;
 
 public class CameraController : MonoBehaviour
 {
@@ -55,14 +56,13 @@ public class CameraController : MonoBehaviour
     private void LookUp()
     {
         if (hiding || !inTrash) return;
-        
-        inTrash = false;
         camTransform.DOMoveY(upY,0.5f).SetEase(Ease.OutExpo);
         cam.DOOrthoSize(upOrtho,0.3f).SetEase(Ease.OutQuad);
         LeftHand.DOMove(lookingLefttHandPos,0.5f).SetEase(Ease.OutExpo);
         RightHand.DOMove(lookingRightHandPos,0.5f).SetEase(Ease.OutExpo);
         LeftHand.DORotate(upLeftRotation,0.5f).SetEase(Ease.OutExpo);
         RightHand.DORotate(upRightRotation,0.5f).SetEase(Ease.OutExpo);
+        inTrash = false;
     }
 
     private void LookDown()
@@ -83,19 +83,27 @@ public class CameraController : MonoBehaviour
         if (!inTrash) return;
         if(hide)
         {
+            AudioManager.PlaySound("TrashLidClose");
             hiding = true;
-            cam.DOOrthoSize(closeOrtho,0.4f).SetEase(Ease.OutQuad);
+            cam.DOOrthoSize(closeOrtho,0.3f).SetEase(Ease.OutQuad);
             LeftHand.DOMove(leftHidingHandPos,0.5f).SetEase(Ease.OutExpo);
             RightHand.DOMove(rightHidingHandPos,0.5f).SetEase(Ease.OutExpo);
             darkness.DOFade(0.7f,0.3f).SetEase(Ease.OutExpo);
+            StartCoroutine(ShakeWithDelay());
         }
         else
         {
+            AudioManager.PlaySound("TrashLidOpen");
             hiding = false;
             darkness.DOFade(0.1f,0.3f).SetEase(Ease.OutExpo);
             cam.DOOrthoSize(defaultOrtho,0.3f).SetEase(Ease.OutQuad);
             LeftHand.DOMove(defaultLefttHandPos,0.5f).SetEase(Ease.OutExpo);
             RightHand.DOMove(defaultRightHandPos,0.5f).SetEase(Ease.OutExpo);
         }
+    }
+
+    public IEnumerator ShakeWithDelay(){
+        yield return new WaitForSeconds(0.34f);
+        CameraShaker.Instance.ShakeOnce(3f,3f,0.1f,0.1f);
     }
 }
