@@ -578,7 +578,7 @@ RectTransform:
   - {fileID: 2019537610}
   - {fileID: 438457095}
   m_Father: {fileID: 1953761358}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -657,7 +657,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657835588}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -981,7 +981,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1727885943
 MonoBehaviour:
@@ -1096,12 +1096,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8290853917049567077}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
         m_MethodName: StartGame
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 657835589}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1237,6 +1237,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8290853917049567076}
   - {fileID: 657835589}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1529,12 +1530,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8290853917049567066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 387.9, y: 218, z: 0}
-  m_LocalScale: {x: 0.40388304, y: 0.40388304, z: 0.40388304}
+  m_LocalPosition: {x: 142.64124, y: -14.23774, z: 0}
+  m_LocalScale: {x: 1.0648867, y: 1.0648867, z: 1.0648867}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1953761358}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8290853917049567077
 MonoBehaviour:
@@ -1549,9 +1550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pnl_main: {fileID: 657835589}
-  lerpTransform: {fileID: 0}
-  pauseUI: {fileID: 0}
-  isPaused: 0
 --- !u!114 &8290853917049567079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,6 +1643,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 81196204-70e2-48aa-8928-3c03e33f1776
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 26518d7e-e24d-45d5-952e-4e88ff0056ee
+    m_ActionName: Player/LookUp[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e912c098-e9c6-4541-96d7-a788bdba771b
+    m_ActionName: Player/LookDown[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c5f97ee5-43f3-491f-8219-f1a0bf31e3f0
+    m_ActionName: Player/Hide[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
