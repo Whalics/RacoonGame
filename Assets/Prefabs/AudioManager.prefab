@@ -70,3 +70,13 @@ MonoBehaviour:
     volume: 0
     pitchVariation: 0
     source: {fileID: 0}
+  - audioName: StomachQuiet
+    audioClip: {fileID: 8300000, guid: 781c6a7cb539e0748a7ce9704d12e694, type: 3}
+    volume: 0.6
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: StomachLoud
+    audioClip: {fileID: 8300000, guid: a22d917293af2724a9d4b1e218d3b21c, type: 3}
+    volume: 1
+    pitchVariation: 0
+    source: {fileID: 0}
