@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b74307ea8092d46b104f4811dfb7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trashPrefab: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
   _xDist: 7
   _xAmount: 5
   _yDist: 4.5
@@ -745,6 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b74307ea8092d46b104f4811dfb7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trashPrefab: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
   _xDist: 7
   _xAmount: 5
   _yDist: 4.5
@@ -854,6 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b74307ea8092d46b104f4811dfb7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trashPrefab: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
   _xDist: 7
   _xAmount: 5
   _yDist: 4.5
@@ -1033,6 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b74307ea8092d46b104f4811dfb7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trashPrefab: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
   _xDist: 7
   _xAmount: 5
   _yDist: 4.5
@@ -1092,6 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b74307ea8092d46b104f4811dfb7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trashPrefab: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
   _xDist: 7
   _xAmount: 5
   _yDist: 4.5

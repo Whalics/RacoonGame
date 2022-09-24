@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class TrashGenerator : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer _trashPrefab;
     [SerializeField] private float _xDist;
     [SerializeField] private int _xAmount;
     [SerializeField] private float _yDist;
@@ -47,10 +48,9 @@ public class TrashGenerator : MonoBehaviour
 
     private void CreateNewTrash(Vector3 pos)
     {
-        var obj = new GameObject("Trash", typeof(SpriteRenderer)).GetComponent<SpriteRenderer>();
-        obj.sprite = _objects[Random.Range(0, _objects.Count - 1)];
-        obj.transform.parent = transform;
-        obj.transform.position = pos;
+        var trash = Instantiate(_trashPrefab, transform);
+        trash.sprite = _objects[Random.Range(0, _objects.Count - 1)];
+        trash.transform.position = pos;
     }
 
     private void OnDrawGizmos()
