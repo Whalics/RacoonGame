@@ -8,6 +8,8 @@ public class HandsController : MonoBehaviour
 {
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private float _speed;
+    [SerializeField] private float _influenceRadius;
+    [SerializeField] private float _pushForce;
     [SerializeField, ReadOnly] private bool _drag;
     
     [Header("Left")]
@@ -19,20 +21,10 @@ public class HandsController : MonoBehaviour
     [SerializeField, HighlightIfNull] private Transform _right;
     [SerializeField] private Vector3 _rightRest;
     [SerializeField] private Vector3 _rightDrag;
-    
-    [Button(Spacing = 10)]
-    private void SetRestPos()
-    {
-        _leftRest = _left.position;
-        _rightRest = _right.position;
-    }
 
-    [Button]
-    private void SetDragPos()
-    {
-        _leftDrag = _left.position;
-        _rightDrag = _right.position;
-    }
+    private List<Trash> _nearbyTrash;
+    private Vector3 _mousePrev;
+    private Vector3 _mouseOffset;
 
     private void OnEnable()
     {
@@ -42,7 +34,23 @@ public class HandsController : MonoBehaviour
     {
         UserInput.Drag -= Drag;
     }
-    private void Drag(bool drag) => _drag = drag;
+    private void Drag(bool drag)
+    {
+        _drag = drag;
+        if (drag)
+        {
+            _nearbyTrash = new List<Trash>();
+            var pos = _mousePrev;
+            pos.z = 1;  
+            foreach (var trash in Trash.AllTrash)
+            {
+                if (Vector3.Distance(pos, trash.transform.position) < _influenceRadius)
+                {
+                    _nearbyTrash.Add(trash);
+                }
+            }
+        }
+    }
 
     private void OnValidate()
     {
@@ -54,6 +62,7 @@ public class HandsController : MonoBehaviour
         if (_cameraController.CanDigInTrash)
         {
             UpdatePosition();
+            if (_drag) MoveTrash();
         }
     }
 
@@ -67,5 +76,22 @@ public class HandsController : MonoBehaviour
         
         var rightGoal = _drag ? _rightDrag + mPos : _rightRest;
         _right.position = Vector3.Lerp(_right.position, rightGoal, _speed * Time.deltaTime);
+
+        _mouseOffset = mPos - _mousePrev;
+        _mousePrev = mPos;
     }
+
+    private void MoveTrash()
+    {
+        foreach (var trash in _nearbyTrash)
+        {
+            trash.Push(_mouseOffset * _pushForce);
+        }
+    }
+}
+
+internal struct TrashGrab
+{
+    public Trash Trash;
+    public float Dist;
 }

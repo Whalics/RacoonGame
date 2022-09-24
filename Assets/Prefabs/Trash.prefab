@@ -98,4 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
+  _returnSpeed: 0.1
+  _drag: 0.5
+  _dragSpeed: 2
+  _timeToMove: 5
+  _timeToMoveVariation: 2
   _vel: {x: 0, y: 0, z: 0}

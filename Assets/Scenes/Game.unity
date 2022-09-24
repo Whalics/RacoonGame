@@ -959,7 +959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraController: {fileID: 1630038938}
-  _speed: 18
+  _speed: 10
+  _influenceRadius: 1.5
+  _pushForce: 25
   _drag: 0
   _left: {fileID: 528487915}
   _leftRest: {x: -6, y: 0, z: 0}
