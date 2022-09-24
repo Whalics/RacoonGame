@@ -8,7 +8,6 @@ using EZCameraShake;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform camTransform;
     public Camera cam;
     public float upY = 9f;
     public float downY = 0f;
@@ -59,7 +58,7 @@ public class CameraController : MonoBehaviour
     private void LookUp()
     {
         if (hiding || !inTrash) return;
-        camTransform.DOMoveY(upY,0.5f).SetEase(Ease.OutExpo);
+        transform.DOMoveY(upY,0.5f).SetEase(Ease.OutExpo);
         cam.DOOrthoSize(upOrtho,0.3f).SetEase(Ease.OutQuad);
         LeftHand.DOMove(lookingLefttHandPos,0.5f).SetEase(Ease.OutExpo);
         RightHand.DOMove(lookingRightHandPos,0.5f).SetEase(Ease.OutExpo);
@@ -72,7 +71,7 @@ public class CameraController : MonoBehaviour
     {
         if (hiding || inTrash) return;
         
-        camTransform.DOMoveY(downY,0.5f).SetEase(Ease.OutExpo);
+        transform.DOMoveY(downY,0.5f).SetEase(Ease.OutExpo);
         cam.DOOrthoSize(defaultOrtho,0.3f).SetEase(Ease.OutQuad);
         LeftHand.DOMove(defaultLefttHandPos,0.5f).SetEase(Ease.OutExpo);
         RightHand.DOMove(defaultRightHandPos,0.5f).SetEase(Ease.OutExpo);
