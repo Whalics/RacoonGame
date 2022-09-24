@@ -50,8 +50,13 @@ MonoBehaviour:
     volume: 0
     pitchVariation: 0
     source: {fileID: 0}
-  - audioName: TrashLidClose
+  - audioName: TrashLidOpen
     audioClip: {fileID: 8300000, guid: 16881d4b3ddc65c4b838023c090d2f28, type: 3}
+    volume: 1
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: TrashLidClose
+    audioClip: {fileID: 8300000, guid: 077fe1cabefab334ea8bf3458a29aa4d, type: 3}
     volume: 1
     pitchVariation: 0
     source: {fileID: 0}
