@@ -77,6 +77,26 @@ MonoBehaviour:
     source: {fileID: 0}
   - audioName: StomachLoud
     audioClip: {fileID: 8300000, guid: a22d917293af2724a9d4b1e218d3b21c, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: Sniff1
+    audioClip: {fileID: 8300000, guid: b94c02c6b29c45c4c993eab7a872ab43, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: Sniff2
+    audioClip: {fileID: 8300000, guid: 90f3cfe3876e8b0469a6beb0d7353881, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: Sniff3
+    audioClip: {fileID: 8300000, guid: d195827b657df0946adb5d0cb94f2006, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    source: {fileID: 0}
+  - audioName: Sniff4
+    audioClip: {fileID: 8300000, guid: e3cdbe40e1b3ba94abcb019f186cfd2e, type: 3}
     volume: 1
     pitchVariation: 0
     source: {fileID: 0}
