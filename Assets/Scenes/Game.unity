@@ -899,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraController: {fileID: 1630038938}
+  _trashController: {fileID: 1642848225}
   _speed: 10
   _influenceRadius: 2
   _drag: 0
@@ -1067,6 +1068,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trashPrefab: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+  _trashLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   _objects:
   - {fileID: 806969276, guid: 8094175803f18c4469b505c63d97336e, type: 3}
   - {fileID: 1984554402, guid: 8094175803f18c4469b505c63d97336e, type: 3}
@@ -1078,11 +1082,11 @@ MonoBehaviour:
   - {fileID: 629783174, guid: 8094175803f18c4469b505c63d97336e, type: 3}
   _xDist: 8
   _yDist: 5
-  _separation: 1.4
+  _separation: 1.5
   _random: 0.75
-  _layerCount: 5
+  _layerCount: 8
   _zMin: 1
-  _zMax: 5
+  _zMax: 8
   _extraRandomObjects: 40
 --- !u!1 &1959338385
 GameObject:

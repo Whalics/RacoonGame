@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class HandsController : MonoBehaviour
 {
     [SerializeField] private CameraController _cameraController;
+    [SerializeField] private TrashController _trashController;
     [SerializeField] private float _speed;
     [SerializeField] private float _influenceRadius;
     [SerializeField, ReadOnly] private bool _drag;
@@ -49,6 +50,7 @@ public class HandsController : MonoBehaviour
     private void OnValidate()
     {
         if (_cameraController == null) _cameraController = FindObjectOfType<CameraController>();
+        if (_trashController == null) _trashController = FindObjectOfType<TrashController>();
     }
     
     private void Update()
@@ -83,7 +85,7 @@ public class HandsController : MonoBehaviour
     {
         _nearbyTrash = new List<TrashGrab>();
         var pos = _mousePrev;
-        pos.z = 1;  
+        pos.z = GetZDist(pos.x, pos.y);
         foreach (var trash in Trash.AllTrash)
         {
             float dist = Vector3.Distance(pos, trash.transform.position);
@@ -94,11 +96,23 @@ public class HandsController : MonoBehaviour
         }
     }
 
+    private float GetZDist(float x, float y)
+    {
+        var origin = _trashController.ClampBounds(new Vector3(x, y, 0));
+        origin.z = -10;
+        Physics.Raycast(origin, Vector3.forward, out var hit, 20, _trashController.TrashLayer);
+        if (hit.collider)
+        {
+            return hit.point.z;
+        }
+        return 0;
+    }
+
     private void MoveTrash()
     {
         foreach (var trash in _nearbyTrash)
         {
-            trash.Trash.Push(_mouseOffset * trash.Dist / _influenceRadius);
+            trash.Trash.Push(_mouseOffset * (1 - trash.Dist / _influenceRadius));
         }
     }
 }

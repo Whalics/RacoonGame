@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6763622204019459545}
   - component: {fileID: 6763622204019459546}
   - component: {fileID: 2134044522822107172}
-  m_Layer: 0
+  - component: {fileID: 7305837346088481962}
+  m_Layer: 10
   m_Name: Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6763622204019459544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.703125, y: 3.1640625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -99,9 +100,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 0}
   _speed: 4
-  _returnSpeed: 0.2
-  _drag: 0.9
-  _dragSpeed: 2
-  _timeToMove: 5
-  _timeToMoveVariation: 2
+  _returnSpeed: 0.02
+  _drag: 0.8
+  _dragSpeed: 10
+  _timeToMove: 4
+  _timeToMoveVariation: 4
   _vel: {x: 0, y: 0, z: 0}
+--- !u!65 &7305837346088481962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763622204019459544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
