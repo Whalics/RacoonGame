@@ -82,9 +82,9 @@ public class TrashController : MonoBehaviour
     {
         var layerObj = new GameObject("Layer: " + z).transform;
         var p = transform.position;
-        for (float x = p.x - _xDist; x < p.x + _xDist; x += _separation)
+        for (float x = p.x - _xDist; x <= p.x + _xDist; x += _separation)
         {
-            for (float y = p.y - _yDist; y < p.y + _yDist; y += _separation)
+            for (float y = p.y - _yDist; y <= p.y + _yDist; y += _separation)
             {
                 var pos = new Vector3(x, y, z) + _random * (Vector3)Random.insideUnitCircle;
                 CreateNewTrash(layerObj, pos);

@@ -9,6 +9,11 @@ public class PauseMenuController : MonoBehaviour
     
     [SerializeField] private RectTransform _pauseUI;
     
+    [SerializeField] private CanvasGroup _winGroup;
+    [SerializeField] private CanvasGroup _fadeBlackGroup;
+
+    private bool _win;
+    
     private CanvasGroup _group;
     private bool _isPaused;
     private Coroutine _unpauseRoutine;
@@ -24,6 +29,21 @@ public class PauseMenuController : MonoBehaviour
     }
     private void OnDisable() {
         UserInput.TogglePaused -= TogglePaused;
+    }
+
+    private void Update()
+    {
+        if (!_win && TrashEdible.EdibleItemsRemaining <= 0)
+        {
+            _winGroup.gameObject.SetActive(true);
+            _fadeBlackGroup.gameObject.SetActive(true);
+            _winGroup.alpha = 0;
+            _fadeBlackGroup.alpha = 0;
+            var mySequence = DOTween.Sequence();
+            mySequence.Append(_fadeBlackGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
+            mySequence.Append(_winGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
+            _win = true;
+        }
     }
 
     private void OnDestroy()

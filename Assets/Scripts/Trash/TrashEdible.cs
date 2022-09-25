@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TrashEdible : Trash
 {
+    public static int EdibleItemsRemaining = 0;
+    
     [SerializeField] private List<string> _eatSounds;
     [SerializeField] private List<string> _munchSounds;
     private SpriteRenderer _renderer;
@@ -13,6 +15,7 @@ public class TrashEdible : Trash
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        EdibleItemsRemaining++;
     }
 
     protected override void Update()
@@ -21,7 +24,7 @@ public class TrashEdible : Trash
         base.Update();
     }
     
-    public override void Push(Vector3 dir)
+    public override void PlaySound()
     {
         _eat = true;
         StartCoroutine(AnimateToFront());
@@ -52,6 +55,7 @@ public class TrashEdible : Trash
             _renderer.color = c;
             yield return null;
         }
+        EdibleItemsRemaining--;
         Destroy(gameObject);
     }
 }

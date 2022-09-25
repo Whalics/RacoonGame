@@ -66,7 +66,7 @@ public class Trash : MonoBehaviour
         }
     }
 
-    public virtual void Push(Vector3 dir)
+    public void Push(Vector3 dir)
     {
         var vel = dir.normalized;
         transform.position = _controller.ClampBounds(transform.position + dir);
@@ -77,7 +77,7 @@ public class Trash : MonoBehaviour
         _returnHomeTime = _timeToMove + Random.Range(-_timeToMoveVariation, _timeToMoveVariation);
     }
 
-    public void PlaySound()
+    public virtual void PlaySound()
     {
         if (_clickSounds.Count == 0) return;
         AudioManager.PlaySound(_clickSounds[Random.Range(0, _clickSounds.Count)]);

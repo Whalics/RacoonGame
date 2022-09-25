@@ -9,7 +9,6 @@ using DG.Tweening;
 public class MainMenuController : MonoBehaviour
 {
     public RectTransform pnl_main;
-
     private CanvasGroup _group;
 
     private void Awake() {
