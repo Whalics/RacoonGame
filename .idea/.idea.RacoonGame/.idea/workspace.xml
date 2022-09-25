@@ -35,6 +35,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds\RacoonGame.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\jacki\OneDrive\Documents\Brandon\RacoonGame\Builds" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.3f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\jacki\OneDrive\Documents\Brandon\RacoonGame -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -75,7 +83,9 @@
       <workItem from="1664001250219" duration="201000" />
       <workItem from="1664001507656" duration="9606000" />
       <workItem from="1664089013349" duration="3242000" />
-      <workItem from="1664115954937" duration="3090000" />
+      <workItem from="1664115954937" duration="3838000" />
+      <workItem from="1664120446527" duration="23000" />
+      <workItem from="1664120604173" duration="183000" />
     </task>
     <servers />
   </component>

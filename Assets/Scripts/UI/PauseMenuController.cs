@@ -120,4 +120,13 @@ public class PauseMenuController : MonoBehaviour
         mySequence2.Append(_fadeBlackGroup.DOFade(1f,0.5f).SetEase(Ease.OutSine));
         mySequence2.Append(_loseGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
     }
+
+    public void HideText()
+    {
+        // TODO
+    }
+    
+    public void HoverSound(){
+        AudioManager.PlaySound("Hover");
+    }
 }
