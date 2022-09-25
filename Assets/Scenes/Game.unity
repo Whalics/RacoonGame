@@ -2068,37 +2068,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adb4ae9bd243e64f864c87d4820819c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  susmeter: 0
-  susResetDuration: 0
-  stomachGrowlInfluence: 2
-  quietTrashInfluence: 0
-  loudTrashInfluence: 0
-  hideInfluence: 0
-  tummyTimer: 20
-  growled: 0
-  locationindex: 0
-  cameracontroller: {fileID: 0}
-  insideLightOn: 0
-  curtainsOpen: 0
-  blindsOpen: 0
-  cameraOn: 0
-  porchlightOn: 0
-  doorSilloutte: 0
-  doorOpen: 0
-  caught: 0
-  lightSound: 0
-  porchLightSound: 0
-  blindsSound: 0
-  houseLightsOn: {fileID: 731616328}
-  houseCurtainsOpen: {fileID: 1687337433}
-  houseBlindsOpen: {fileID: 583701960}
-  houseCameraOn: {fileID: 1504429041}
-  housePorchlightOn: {fileID: 33146852}
-  houseDoorSillouette: {fileID: 674088574}
-  houseDoorOpen: {fileID: 2078285643}
-  face: {fileID: 143747720}
-  img_face: {fileID: 143747718}
-  soundRandomizer: 0
+  _player: {fileID: 1630038938}
+  _goingToDie: 0
+  _dead: 0
+  face: {fileID: 0}
+  img_face: {fileID: 0}
+  _hunger: 0
+  _timesGrowled: 0
+  _hungerRate: 1
+  _hungerToGrowl: 6
+  _foodSatisfaction: 8
+  _timeToGetHungry: 1.5
+  _sus: 0
+  _activeSusTime: 2
+  _susHidingRate: -0.1
+  _susNormalRate: 0.01
+  _susFromEating: 0.1
+  _susFromGrowl: 3
+  _susFromSniff: 0.25
+  _susFromClickingGarbage: 0.1
+  _susFromMovingGarbage: 0.02
+  _susLevel: 0
+  houseLightsOff: {fileID: 0}
+  _level1: 1.2
+  houseLightsOn: {fileID: 0}
+  _level2: 3.5
+  houseCurtainsOpen: {fileID: 0}
+  _level3: 6.5
+  houseBlindsOpen: {fileID: 0}
+  _level4: 9
+  houseCameraOn: {fileID: 0}
+  _level5: 11
+  housePorchlightOn: {fileID: 0}
+  _level6: 13
+  houseDoorSillouette: {fileID: 0}
+  _level7: 15
+  houseDoorOpen: {fileID: 0}
+  _timeToSniff: 8
+  _timeToSniffVariation: 5
+  _sniffSounds: []
 --- !u!4 &1247485336
 Transform:
   m_ObjectHideFlags: 0

@@ -47,14 +47,14 @@ public class HandsController : MonoBehaviour
 
     private void Drag(bool drag)
     {
-        if (_cameraController.CanDigInTrash) _susController.IncreaseSus(0.2f);
-
         _drag = drag;
 
         if (_cameraController.CanDigInTrash)
         {
             var pos = _trashController.ClampBounds(_mousePrev);
             GetZDist(pos.x, pos.y, true);
+            
+            _susController.OnClickGarbage();
         }
 
         bool dragging = drag && _cameraController.CanDigInTrash;
