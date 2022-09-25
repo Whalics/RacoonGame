@@ -167,7 +167,7 @@ public class SusController : MonoBehaviour
             //4 => "BlindsOpen",
             //4 => "DoorOpen",
             5 => "Light2",
-            6 => "Running",
+            //6 => "Running",
             7 => "Running",
             _ => ""
         };
