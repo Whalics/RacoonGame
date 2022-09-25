@@ -55,6 +55,8 @@ public class SusController : MonoBehaviour
     {
         ResetTummyTimer();
     }
+    
+   
 
     void Update()
     {
@@ -74,8 +76,8 @@ public class SusController : MonoBehaviour
 
         if(susmeter > 3 && !cameracontroller.hiding){
             susmeter += Time.deltaTime/2;
-            UpdateSceneSus();
         }
+        UpdateSceneSus();
 
         if(soundRandomizer > 0){
             soundRandomizer-=Time.deltaTime;

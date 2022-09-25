@@ -274,5 +274,13 @@ MonoBehaviour:
     volume: 0.4
     pitchVariation: 0.3
     source: {fileID: 0}
+    mixer: {fileID: 0}
+    audioloop: 0
+  - audioName: Hover
+    audioClip: {fileID: 8300000, guid: 22c8c60bd4a924049a39132b6c269f5f, type: 3}
+    volume: 0.2
+    pitchVariation: 0.1
+    source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   _defaultMixer: {fileID: 24300002, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}

@@ -63,6 +63,10 @@ public class MainMenuController : MonoBehaviour
         //mySequence.AppendInterval(0.4f);
         //mySequence.Append(tutorial.GetComponent<Image>().DOFade(1f,0.5f).SetEase(Ease.OutSine));
     }
+    
+    public void HoverSound(){
+        AudioManager.PlaySound("Hover");
+    }
 
     public void QuitGame(){
         Application.Quit();
