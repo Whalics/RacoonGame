@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -18,10 +19,17 @@ public class PauseMenuController : MonoBehaviour
     private bool _isPaused;
     private Coroutine _unpauseRoutine;
 
+    public Image img_black;
+
     private void Awake() {
         _group = _pauseUI.GetComponent<CanvasGroup>();
         IsPaused = false;
         _isPaused = false;
+    }
+    
+    private void Start(){
+        img_black.DOFade(0f,1f).SetEase(Ease.InOutQuint);
+        AudioManager.PlaySound("TrashEnter");
     }
 
     private void OnEnable() {

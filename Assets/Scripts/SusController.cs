@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class SusController : MonoBehaviour
 {
@@ -38,6 +40,9 @@ public class SusController : MonoBehaviour
     public GameObject housePorchlightOn;
     public GameObject houseDoorSillouette;
     public GameObject houseDoorOpen;
+
+    public Transform face;
+    public Image img_face;
 
     public float soundRandomizer;
     
@@ -198,8 +203,9 @@ public class SusController : MonoBehaviour
             porchlightOn = false;
         }
         //camera
-        if(susmeter >= 13f){
+        if(susmeter >= 13f && !doorSilloutte){
             doorSilloutte = true;
+            AudioManager.PlaySound("Running");
         }
         else doorSilloutte = false;
 
@@ -216,6 +222,10 @@ public class SusController : MonoBehaviour
     }
 
     public void Caught(){
+        var mySequence = DOTween.Sequence();
+        var mySequence2 = DOTween.Sequence();
+        mySequence.Append(img_face.DOFade(1f,0.4f).SetEase(Ease.OutCirc));
+        mySequence2.Append(face.DOScale(1f,0.4f).SetEase(Ease.OutCirc));
 
     }
 

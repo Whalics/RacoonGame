@@ -237,3 +237,9 @@ MonoBehaviour:
     pitchVariation: 0.3
     source: {fileID: 0}
     audioloop: 0
+  - audioName: TrashEnter
+    audioClip: {fileID: 8300000, guid: e69938c03fb7903468278639417dcb9a, type: 3}
+    volume: 0.4
+    pitchVariation: 0.3
+    source: {fileID: 0}
+    audioloop: 0

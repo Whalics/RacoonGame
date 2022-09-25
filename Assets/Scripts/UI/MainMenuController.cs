@@ -20,22 +20,28 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(AudioManager.PlayFade("Cicades",4f,0f,0.5f));
         Time.timeScale = 1; 
         TitleEnter();
+        
     }
 
     private void TitleEnter(){
         Debug.Log("Entered");
         _group.alpha = 0;
         var mySequence = DOTween.Sequence();
+        var mySequence2 = DOTween.Sequence();
         mySequence.AppendInterval(0.4f);
         mySequence.Append(_group.DOFade(1f,1f).SetEase(Ease.OutSine));
+        mySequence2.Append(pnl_black.DOFade(0f,1f).SetEase(Ease.InOutQuint));
+        
     }
 
     public void StartGame(){
         var mySequence = DOTween.Sequence();
+        var mySequence2 = DOTween.Sequence();
         mySequence.AppendInterval(0.4f);
-        mySequence.Append(pnl_main.DOAnchorPos(Vector2.up*-1080,0.8f,false).SetEase(Ease.InOutQuint));
-        pnl_black.DOFade(1f,0.4f).SetEase(Ease.InOutQuint);
-        StartCoroutine(SceneChange("Game", 1.3f));
+        mySequence2.AppendInterval(0.6f);
+        mySequence.Append(_group.DOFade(0f,0.5f).SetEase(Ease.OutSine));
+        mySequence2.Append(pnl_black.DOFade(1f,0.4f).SetEase(Ease.InOutQuint));
+        StartCoroutine(SceneChange("Game", 1.6f));
     }
 
     public static IEnumerator SceneChange(string scene, float s){
