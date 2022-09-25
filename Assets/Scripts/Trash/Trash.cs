@@ -39,6 +39,8 @@ public class Trash : MonoBehaviour
     {
         _homePos = transform.position;
         _returnToHome = true;
+        
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0f, 360f)));
     }
 
     private void Update()
