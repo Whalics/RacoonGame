@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class Trash : MonoBehaviour
 {
     public static List<Trash> AllTrash = new List<Trash>();
-    
+
+    [SerializeField] private TrashController _controller;
     [SerializeField] private float _speed;
     [SerializeField] private float _returnSpeed;
     [SerializeField, Range(0, 1)] private float _drag;
@@ -18,9 +19,12 @@ public class Trash : MonoBehaviour
 
     private Vector3 _homePos;
     private bool _returnToHome;
+    private bool _pushedLastFrame;
     private float _lastTimePushed;
     private float _returnHomeTime;
 
+    public void SetController(TrashController controller) => _controller = controller;
+    
     private void OnEnable()
     {
         AllTrash.Add(this);
@@ -39,13 +43,18 @@ public class Trash : MonoBehaviour
 
     private void Update()
     {
+        if (_pushedLastFrame)
+        {
+            _pushedLastFrame = false;
+            return;
+        }
         if (_returnToHome)
         {
             transform.position = Vector3.Lerp(transform.position, _homePos, _returnSpeed * Time.deltaTime);
             return;
         }
         
-        transform.position += _vel * (_speed * Time.deltaTime);
+        transform.position = _controller.ClampBounds(transform.position + _vel * (_speed * Time.deltaTime));
         _vel = Vector3.Lerp(_vel, _vel * (1 - _drag), _dragSpeed * Time.deltaTime);
 
         if (Time.time - _lastTimePushed > _returnHomeTime)
@@ -56,7 +65,9 @@ public class Trash : MonoBehaviour
 
     public void Push(Vector3 dir)
     {
-        _vel = dir;
+        _vel = dir.normalized;
+        transform.position += dir;
+        _pushedLastFrame = true;
         _lastTimePushed = Time.time;
         _returnToHome = false;
         _returnHomeTime = _timeToMove + Random.Range(-_timeToMoveVariation, _timeToMoveVariation);
