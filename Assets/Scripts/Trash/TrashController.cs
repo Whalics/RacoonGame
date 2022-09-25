@@ -23,6 +23,10 @@ public class TrashController : MonoBehaviour
     [SerializeField] private List<Trash> _individualTrash;
 
     public LayerMask TrashLayer => _trashLayer;
+    public float DistX => _xDist;
+    public float DistY => _yDist;
+    public float MinZ => _zMin;
+    public float MaxZ => _zMax;
 
     private void Start()
     {

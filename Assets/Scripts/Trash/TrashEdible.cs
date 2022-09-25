@@ -7,6 +7,7 @@ public class TrashEdible : Trash
 {
     public static int EdibleItemsRemaining = 0;
     
+    [SerializeField] private bool _randomizePosition;
     [SerializeField] private List<string> _eatSounds;
     [SerializeField] private List<string> _munchSounds;
     private SpriteRenderer _renderer;
@@ -16,6 +17,19 @@ public class TrashEdible : Trash
     {
         _renderer = GetComponent<SpriteRenderer>();
         EdibleItemsRemaining++;
+    }
+    
+    protected override void Start()
+    {
+        if (_randomizePosition)
+        {
+            var pos = _controller.transform.position;
+            pos.x = Random.Range(pos.x - _controller.DistX, pos.x + _controller.DistX);
+            pos.y = Random.Range(pos.y - _controller.DistY, pos.y + _controller.DistY);
+            pos.z = transform.position.z;
+            transform.position = pos;
+        }
+        base.Start();
     }
 
     protected override void Update()

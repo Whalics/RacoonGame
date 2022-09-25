@@ -8,7 +8,7 @@ public class Trash : MonoBehaviour
 {
     public static List<Trash> AllTrash = new List<Trash>();
 
-    [SerializeField] private TrashController _controller;
+    [SerializeField] protected TrashController _controller;
     [SerializeField] private float _speed = 4;
     [SerializeField] private float _returnSpeed = 0.02f;
     [SerializeField, Range(0, 1)] private float _drag = 0.8f;
@@ -36,7 +36,7 @@ public class Trash : MonoBehaviour
         AllTrash.Remove(this);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         _homePos = transform.position;
         _returnToHome = true;
@@ -53,7 +53,9 @@ public class Trash : MonoBehaviour
         }
         if (_returnToHome)
         {
-            transform.position = Vector3.Lerp(transform.position, _homePos, _returnSpeed * Time.deltaTime);
+            float zDelta = (transform.position.z - _controller.MinZ) / (_controller.MaxZ - _controller.MinZ);
+            float backMult = Mathf.Clamp01(1 - zDelta);
+            transform.position = Vector3.Lerp(transform.position, _homePos, backMult * _returnSpeed * Time.deltaTime);
             return;
         }
         
