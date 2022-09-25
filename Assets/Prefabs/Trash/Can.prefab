@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2134044522822107172, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+      propertyPath: _clickSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134044522822107172, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+      propertyPath: _clickSounds.Array.data[0]
+      value: Can1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134044522822107172, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+      propertyPath: _clickSounds.Array.data[1]
+      value: Can2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134044522822107172, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+      propertyPath: _clickSounds.Array.data[2]
+      value: Can3
+      objectReference: {fileID: 0}
     - target: {fileID: 6763622204019459544, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_Name
       value: Can

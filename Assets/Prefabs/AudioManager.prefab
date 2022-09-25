@@ -59,20 +59,20 @@ MonoBehaviour:
     audioloop: 0
   - audioName: TrashLidClose
     audioClip: {fileID: 8300000, guid: 077fe1cabefab334ea8bf3458a29aa4d, type: 3}
-    volume: 0.905
+    volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
     audioloop: 0
   - audioName: Plastic1
     audioClip: {fileID: 8300000, guid: bcb87ab1610e96844a39f8b9549f078b, type: 3}
-    volume: 1
-    pitchVariation: 0.2
+    volume: 0.4
+    pitchVariation: 0.3
     source: {fileID: 0}
     audioloop: 0
   - audioName: Plastic2
     audioClip: {fileID: 8300000, guid: 6eef67eda8b2cf74f9f4dd7844190e4e, type: 3}
-    volume: 1
-    pitchVariation: 0.2
+    volume: 0.4
+    pitchVariation: 0.3
     source: {fileID: 0}
     audioloop: 0
   - audioName: StomachQuiet
@@ -179,7 +179,55 @@ MonoBehaviour:
     audioloop: 0
   - audioName: Can1
     audioClip: {fileID: 8300000, guid: cba6fc50fcde64c4d95959ec816a23a9, type: 3}
-    volume: 0.2
-    pitchVariation: 0.2
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Can2
+    audioClip: {fileID: 8300000, guid: 78d4915d1b948d946bd21e046094ae60, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Can3
+    audioClip: {fileID: 8300000, guid: 6a13e320359fc2b48b1ad1efa533710f, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Paper1
+    audioClip: {fileID: 8300000, guid: c20d1085b7e722d48aa5525909383ab4, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Paper2
+    audioClip: {fileID: 8300000, guid: 4012a694ac79dd143a7671ac06bbf493, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Bottle1
+    audioClip: {fileID: 8300000, guid: 324a4caea324dcf4c8fd7ea3b4207fe5, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Bottle2
+    audioClip: {fileID: 8300000, guid: 2efcbafce36fa7e48878dd53fb610593, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Bottle3
+    audioClip: {fileID: 8300000, guid: 14a1e52b00c2206469169d21915eab15, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Bottle4
+    audioClip: {fileID: 8300000, guid: 1208ab256e49dc9478c5687853bd5ad7, type: 3}
+    volume: 0.4
+    pitchVariation: 0.4
     source: {fileID: 0}
     audioloop: 0
