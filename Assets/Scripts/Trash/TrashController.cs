@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrashController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _trashPrefab;
+    [SerializeField] private LayerMask _trashLayer;
     [SerializeField] private List<Sprite> _objects;
     
     [SerializeField] private float _xDist;
@@ -18,6 +19,8 @@ public class TrashController : MonoBehaviour
 
     [SerializeField] private int _extraRandomObjects;
 
+    public LayerMask TrashLayer => _trashLayer;
+
     private void Start()
     {
         Generate();
@@ -27,7 +30,7 @@ public class TrashController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         var pos = transform.position;
-        pos.z = (_zMax - _zMin) * 0.5f;
+        pos.z = _zMin + (_zMax - _zMin) * 0.5f;
         Gizmos.DrawWireCube(pos, new Vector3(2 * _xDist, 2 * _yDist, _zMax - _zMin));
     }
 
@@ -50,7 +53,7 @@ public class TrashController : MonoBehaviour
 
         for (int i = 0; i < _layerCount; i++)
         {
-            float z = _zMin + (_zMax - _zMax) / (_layerCount - 1);
+            float z = _zMin + i * (_zMax - _zMin) / (_layerCount - 1);
             GenerateLayer(z);
         }
         

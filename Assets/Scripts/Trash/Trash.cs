@@ -65,8 +65,9 @@ public class Trash : MonoBehaviour
 
     public void Push(Vector3 dir)
     {
-        _vel = dir.normalized;
+        var vel = dir.normalized;
         transform.position = _controller.ClampBounds(transform.position + dir);
+        _vel = vel;
         _pushedLastFrame = true;
         _lastTimePushed = Time.time;
         _returnToHome = false;
