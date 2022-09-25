@@ -90,14 +90,14 @@ public class CameraController : MonoBehaviour
             cam.DOOrthoSize(closeOrtho,0.3f).SetEase(Ease.OutQuad);
             LeftHand.DOMove(leftHidingHandPos,0.5f).SetEase(Ease.OutExpo);
             RightHand.DOMove(rightHidingHandPos,0.5f).SetEase(Ease.OutExpo);
-            darkness.DOFade(0.7f,0.3f).SetEase(Ease.OutExpo);
+            darkness.DOFade(0.85f,0.3f).SetEase(Ease.InCirc);
             StartCoroutine(ShakeWithDelay());
         }
         else
         {
             AudioManager.PlaySound("TrashLidOpen");
             hiding = false;
-            darkness.DOFade(0.1f,0.3f).SetEase(Ease.OutExpo);
+            darkness.DOFade(0.1f,0.3f).SetEase(Ease.OutCirc);
             cam.DOOrthoSize(defaultOrtho,0.3f).SetEase(Ease.OutQuad);
             LeftHand.DOMove(defaultLefttHandPos,0.5f).SetEase(Ease.OutExpo);
             RightHand.DOMove(defaultRightHandPos,0.5f).SetEase(Ease.OutExpo);
