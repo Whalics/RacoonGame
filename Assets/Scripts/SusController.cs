@@ -69,14 +69,19 @@ public class SusController : MonoBehaviour
 
     private void Update()
     {
-        if (_dead) return;
+        if (_dead || PauseMenuController.GameOver) return;
         if (_goingToDie)
         {
-            if (!_player.Hiding)
+            if (!_player.inTrash || (!_player.Hiding && _sus > 17))
             {
                 _player.LookUp();
                 _menu.Lose();
+                AudioManager.PlaySound("Screech");
                 _dead = true;
+            }
+            else
+            {
+                UpdateSus();
             }
             return;
         }
@@ -122,7 +127,7 @@ public class SusController : MonoBehaviour
         if (Time.time - _timeSinceSus < _activeSusTime) return;
 
         // Decrease Sus
-        AdjustSus(-(_player.Hiding ? _susHidingRate : _susNormalRate) * Time.deltaTime);
+        AdjustSus((_player.Hiding ? _susHidingRate : _susNormalRate) * Time.deltaTime);
     }
     
     public void OnClickGarbage() => AdjustSus(_susFromClickingGarbage);
@@ -131,7 +136,7 @@ public class SusController : MonoBehaviour
     private void AdjustSus(float amount)
     {
         if (_dead) return;
-        if (amount > 0) _timeSinceSus = Time.time;
+        if (amount > 1) _timeSinceSus = Time.time;
         _sus += amount;
 
         int susLevel = GetSusLevel(_sus);

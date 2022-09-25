@@ -24,8 +24,8 @@ MonoBehaviour:
     MinValue: 1
     MaxValue: 1
   _rangedFloat01:
-    MinValue: 0
-    MaxValue: 1
+    MinValue: 0.47149998
+    MaxValue: 0.80916035
   _greenField: 0
   _blueField: 0
   _yellowField: 0

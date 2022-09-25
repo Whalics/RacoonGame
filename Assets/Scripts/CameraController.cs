@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     public bool inTrash = false;
     public bool hiding = false;
 
-    public AudioMixer _mixer;
+	public AudioMixer _mixer;
     public Transform LeftHand;
     public Transform RightHand;
     public Vector2 rightHidingHandPos = new Vector2(7.2f,-2.6f);
@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
         RightHand.DOMove(lookingRightHandPos,0.5f).SetEase(Ease.OutExpo);
         LeftHand.DORotate(upLeftRotation,0.5f).SetEase(Ease.OutExpo);
         RightHand.DORotate(upRightRotation,0.5f).SetEase(Ease.OutExpo);
-        inTrash = false;
+	    inTrash = false;
     }
 
     private void LookDown()

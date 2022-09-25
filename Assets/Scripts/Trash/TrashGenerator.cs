@@ -12,17 +12,11 @@ public class TrashGenerator : MonoBehaviour
     [SerializeField] private float _yDist;
     [SerializeField] private int _yAmount;
     [SerializeField] private float _random;
-    [SerializeField] private int _trashAmount;
     [SerializeField] private List<Sprite> _objects;
 
     private void Start()
     {
         Generate();
-    }
-
-    private void OnValidate()
-    {
-        _trashAmount = _xAmount * _yAmount;
     }
 
     [Button(Mode = ButtonMode.InPlayMode)]

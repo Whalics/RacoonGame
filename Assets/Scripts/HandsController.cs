@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class HandsController : MonoBehaviour
 {
+    public static bool Eating;
+    
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private TrashController _trashController;
     [SerializeField] private SusController _susController;
@@ -19,11 +21,13 @@ public class HandsController : MonoBehaviour
     [SerializeField, HighlightIfNull] private Transform _left;
     [SerializeField] private Vector3 _leftRest;
     [SerializeField] private Vector3 _leftDrag;
+    [SerializeField] private Vector3 _leftEat;
     
     [Header("Right")]
     [SerializeField, HighlightIfNull] private Transform _right;
     [SerializeField] private Vector3 _rightRest;
     [SerializeField] private Vector3 _rightDrag;
+    [SerializeField] private Vector3 _rightEat;
     
     [Header("Art")]
     [SerializeField] private List<GameObject> _openArt;
@@ -58,6 +62,7 @@ public class HandsController : MonoBehaviour
         }
 
         bool dragging = drag && _cameraController.CanDigInTrash;
+        Debug.Log(dragging);
         foreach (var obj in _openArt)
         {
             obj.SetActive(!dragging);
@@ -100,14 +105,41 @@ public class HandsController : MonoBehaviour
         var mPos = _cameraController.MainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mPos.z = transform.position.z;
         
-        var leftGoal = _drag ? _leftDrag + mPos : _leftRest;
+        var leftGoal = Eating ? _leftEat : _drag ? _leftDrag + mPos : _leftRest;
         _left.position = Vector3.Lerp(_left.position, leftGoal, _speed * Time.deltaTime);
         
-        var rightGoal = _drag ? _rightDrag + mPos : _rightRest;
+        var rightGoal = Eating ? _rightEat : _drag ? _rightDrag + mPos : _rightRest;
         _right.position = Vector3.Lerp(_right.position, rightGoal, _speed * Time.deltaTime);
 
         _mouseOffset = mPos - _mousePrev;
         _mousePrev = mPos;
+    }
+
+    public void StartEatItem()
+    {
+        Drag(false);
+        Eating = true;
+        _susController.OnEatItem();
+        StartCoroutine(EatRoutine());
+    }
+    private IEnumerator EatRoutine()
+    {
+        // Weird bug fix
+        yield return null;
+        Drag(false);
+        
+        yield return new WaitForSeconds(1);
+        var leftHand = _leftEat;
+        var rightHand = _rightEat;
+        for (float t = 0; t < 1.5f; t += Time.deltaTime)
+        {
+            _leftEat.y = leftHand.y - t;
+            _rightEat.y = rightHand.y - t;
+            yield return null;
+        }
+        _leftEat = leftHand;
+        _rightEat = rightHand;
+        Eating = false;
     }
 
     private void UpdateNearbyTrash()

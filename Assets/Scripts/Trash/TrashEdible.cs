@@ -1,20 +1,22 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 public class TrashEdible : Trash
 {
-    public static int EdibleItemsRemaining = 0;
+	public static int EdibleItemsRemaining = -1;
     
     [SerializeField] private bool _randomizePosition;
     [SerializeField] private List<string> _eatSounds;
     [SerializeField] private List<string> _munchSounds;
     private SpriteRenderer _renderer;
     private bool _eat;
+    private HandsController _hands;
 
     private void Awake()
     {
+        _hands = FindObjectOfType<HandsController>();
         _renderer = GetComponent<SpriteRenderer>();
         EdibleItemsRemaining++;
     }
@@ -40,8 +42,10 @@ public class TrashEdible : Trash
     
     public override void PlaySound()
     {
+        if (_eat) return;
         _eat = true;
         StartCoroutine(AnimateToFront());
+        _hands.StartEatItem();
         AllTrash.Remove(this);
         GetComponent<Collider>().enabled = false;
     }
@@ -52,7 +56,7 @@ public class TrashEdible : Trash
         transform.DOScale(transform.localScale * 1.5f, 1.5f);
         
         yield return new WaitForSeconds(1.5f);
-        
+
         var pos = transform.position;
         Color c = Color.white;
         
