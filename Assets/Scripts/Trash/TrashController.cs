@@ -6,18 +6,19 @@ public class TrashController : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _trashPrefab;
     [SerializeField] private LayerMask _trashLayer;
-    [SerializeField] private List<Sprite> _objects;
     
-    [SerializeField] private float _xDist;
-    [SerializeField] private float _yDist;
-    [SerializeField] private float _separation;
-    [SerializeField] private float _random;
+    [SerializeField] private List<WeightedTrash> _trash;
+    [SerializeField] private float _xDist = 8;
+    [SerializeField] private float _yDist = 5;
+    [SerializeField] private float _separation = 2.5f;
+    [SerializeField] private float _random = 1.5f;
 
-    [SerializeField] private float _layerCount;
-    [SerializeField] private float _zMin;
-    [SerializeField] private float _zMax;
+    [SerializeField] private float _layerCount = 8;
+    [SerializeField] private float _zMin = 1;
+    [SerializeField] private float _zMax = 8;
 
-    [SerializeField] private int _extraRandomObjects;
+    [SerializeField] private int _extraRandomObjects = 50;
+    [SerializeField] private List<Trash> _individualTrash;
 
     public LayerMask TrashLayer => _trashLayer;
 
@@ -46,11 +47,6 @@ public class TrashController : MonoBehaviour
     [Button(Mode = ButtonMode.InPlayMode)]
     private void Generate()
     {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-
         for (int i = 0; i < _layerCount; i++)
         {
             float z = _zMin + i * (_zMax - _zMin) / (_layerCount - 1);
@@ -66,6 +62,19 @@ public class TrashController : MonoBehaviour
             float z = Random.Range(_zMin, _zMax);
             var pos = new Vector3(x, y, z);
             CreateNewTrash(randomObj, pos);
+        }
+
+        var individualObj = new GameObject("Random").transform;
+        individualObj.parent = transform;
+        foreach (var trash in _individualTrash)
+        {
+            if (trash == null) continue;
+            float x = Random.Range(p.x - _xDist, p.x + _xDist);
+            float y = Random.Range(p.y - _yDist, p.y + _yDist);
+            float z = Random.Range(_zMin, _zMax);
+            var obj = Instantiate(trash, individualObj);
+            obj.transform.position = ClampBounds(new Vector3(x, y, z));
+            obj.SetController(this);
         }
     }
     
@@ -86,9 +95,30 @@ public class TrashController : MonoBehaviour
     private void CreateNewTrash(Transform parent, Vector3 pos)
     {
         parent.parent = transform;
-        var trash = Instantiate(_trashPrefab, parent);
-        trash.sprite = _objects[Random.Range(0, _objects.Count - 1)];
+        var prefab = GetRandomTrash();
+        if (prefab == null) return;
+        var trash = Instantiate(prefab, parent);
         trash.transform.position = ClampBounds(pos);
-        trash.GetComponent<Trash>().SetController(this);
+        trash.SetController(this);
+    }
+
+    private Trash GetRandomTrash()
+    {
+        float weightSum = 0f;
+        for (int i = 0; i < _trash.Count; ++i)
+        {
+            weightSum += _trash[i].Weight;
+        }
+        int index = 0;
+        while (index < _trash.Count)
+        {
+            if (Random.Range(0, weightSum) < _trash[index].Weight)
+            {
+                return _trash[index].Trash;
+            }
+            weightSum -= _trash[index++].Weight;
+        }
+        Debug.Log("Error", gameObject);
+        return null;
     }
 }

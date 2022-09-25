@@ -8,11 +8,14 @@ public class HandsController : MonoBehaviour
 {
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private TrashController _trashController;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _influenceRadius;
+    [SerializeField] private SusController _susController;
+    [SerializeField] private float _speed = 10;
+    [SerializeField] private float _influenceRadius = 2;
+    [SerializeField, Range(0, 1)] private float _influenceDrag = 0.1f;
     [SerializeField, ReadOnly] private bool _drag;
-    
-    [Header("Left")]
+    [SerializeField, ReadOnly] private float _zTimeUpdate = 1;
+
+    [Header("Left")] 
     [SerializeField, HighlightIfNull] private Transform _left;
     [SerializeField] private Vector3 _leftRest;
     [SerializeField] private Vector3 _leftDrag;
@@ -21,17 +24,19 @@ public class HandsController : MonoBehaviour
     [SerializeField, HighlightIfNull] private Transform _right;
     [SerializeField] private Vector3 _rightRest;
     [SerializeField] private Vector3 _rightDrag;
+    
+    [Header("Art")]
+    [SerializeField] private List<GameObject> _openArt;
+    [SerializeField] private List<GameObject> _closedArt;
 
     private List<TrashGrab> _nearbyTrash;
     private Vector3 _mousePrev;
     private Vector3 _mouseOffset;
-
-
-    private SusController suscontroller;
-
+    private float _depthZ;
+    private float _timeZChecked;
+    
     private void OnEnable()
     {
-        suscontroller = GameObject.Find("SusController").GetComponent<SusController>();
         UserInput.Drag += Drag;
     }
 
@@ -42,15 +47,28 @@ public class HandsController : MonoBehaviour
 
     private void Drag(bool drag)
     {
-        if (_cameraController.CanDigInTrash) suscontroller.IncreaseSus(0.2f);
+        if (_cameraController.CanDigInTrash) _susController.IncreaseSus(0.2f);
 
         _drag = drag;
+        var pos = _trashController.ClampBounds(_mousePrev);
+        GetZDist(pos.x, pos.y);
+
+        bool dragging = drag && _cameraController.CanDigInTrash;
+        foreach (var obj in _openArt)
+        {
+            obj.SetActive(!dragging);
+        }
+        foreach (var obj in _closedArt)
+        {
+            obj.SetActive(dragging);
+        }
     }
 
     private void OnValidate()
     {
         if (_cameraController == null) _cameraController = FindObjectOfType<CameraController>();
         if (_trashController == null) _trashController = FindObjectOfType<TrashController>();
+        if (_susController == null) _susController = FindObjectOfType<SusController>();
     }
     
     private void Update()
@@ -63,6 +81,11 @@ public class HandsController : MonoBehaviour
                 UpdateNearbyTrash();
                 MoveTrash();
             }
+        }
+        if (Time.time - _timeZChecked > _zTimeUpdate)
+        {
+            var pos = _trashController.ClampBounds(_mousePrev);
+            GetZDist(pos.x, pos.y);
         }
     }
 
@@ -85,7 +108,7 @@ public class HandsController : MonoBehaviour
     {
         _nearbyTrash = new List<TrashGrab>();
         var pos = _mousePrev;
-        pos.z = GetZDist(pos.x, pos.y);
+        pos.z = _depthZ;
         foreach (var trash in Trash.AllTrash)
         {
             float dist = Vector3.Distance(pos, trash.transform.position);
@@ -96,23 +119,23 @@ public class HandsController : MonoBehaviour
         }
     }
 
-    private float GetZDist(float x, float y)
+    private void GetZDist(float x, float y)
     {
+        _timeZChecked = Time.time;
         var origin = _trashController.ClampBounds(new Vector3(x, y, 0));
         origin.z = -10;
         Physics.Raycast(origin, Vector3.forward, out var hit, 20, _trashController.TrashLayer);
         if (hit.collider)
         {
-            return hit.point.z;
+            _depthZ = hit.point.z;
         }
-        return 0;
     }
 
     private void MoveTrash()
     {
         foreach (var trash in _nearbyTrash)
         {
-            trash.Trash.Push(_mouseOffset * (1 - trash.Dist / _influenceRadius));
+            trash.Trash.Push(_mouseOffset * Mathf.Clamp01(_influenceDrag + 1 - trash.Dist / _influenceRadius));
         }
     }
 }
