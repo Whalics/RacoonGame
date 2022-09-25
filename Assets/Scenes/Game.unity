@@ -1723,16 +1723,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _trash:
-  - Weight: 2
-    Trash: {fileID: 4581287566114603543, guid: b55b6783c5b4c2b42860d91f693eec57, type: 3}
-  - Weight: 0.5
-    Trash: {fileID: 4581287566114603543, guid: 0bed9115f763d624f9c749f97f101db5, type: 3}
   - Weight: 1
+    Trash: {fileID: 4581287566114603543, guid: b55b6783c5b4c2b42860d91f693eec57, type: 3}
+  - Weight: 0.4
+    Trash: {fileID: 4581287566114603543, guid: 0bed9115f763d624f9c749f97f101db5, type: 3}
+  - Weight: 0.8
     Trash: {fileID: 4581287566114603543, guid: 28e90095bcfebca449896d208ed610bc, type: 3}
-  - Weight: 2.5
+  - Weight: 2.6
     Trash: {fileID: 4581287566114603543, guid: 67cad0f155ccb764dad999c324b57aee, type: 3}
-  - Weight: 3
+  - Weight: 2.2
     Trash: {fileID: 4581287566114603543, guid: 81ae53caba085a34dafb8ad5c26dbf49, type: 3}
+  - Weight: 1.6
+    Trash: {fileID: 4581287566114603543, guid: fb0a24598b422c240b0d6910cb003f8f, type: 3}
   _xDist: 7.5
   _yDist: 4.5
   _separation: 3
@@ -3884,6 +3886,9 @@ MonoBehaviour:
   _timeToMove: 4
   _timeToMoveVariation: 4
   _vel: {x: 0, y: 0, z: 0}
+  _clickSounds: []
+  _eatSounds: []
+  _munchSounds: []
 --- !u!1 &9211145898632895504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3990,6 +3995,9 @@ MonoBehaviour:
   _timeToMove: 4
   _timeToMoveVariation: 4
   _vel: {x: 0, y: 0, z: 0}
+  _clickSounds: []
+  _eatSounds: []
+  _munchSounds: []
 --- !u!1 &9211145899184472452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4096,3 +4104,6 @@ MonoBehaviour:
   _timeToMove: 4
   _timeToMoveVariation: 4
   _vel: {x: 0, y: 0, z: 0}
+  _clickSounds: []
+  _eatSounds: []
+  _munchSounds: []
