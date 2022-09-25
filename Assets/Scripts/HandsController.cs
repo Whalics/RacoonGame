@@ -50,8 +50,12 @@ public class HandsController : MonoBehaviour
         if (_cameraController.CanDigInTrash) _susController.IncreaseSus(0.2f);
 
         _drag = drag;
-        var pos = _trashController.ClampBounds(_mousePrev);
-        GetZDist(pos.x, pos.y, true);
+
+        if (_cameraController.CanDigInTrash)
+        {
+            var pos = _trashController.ClampBounds(_mousePrev);
+            GetZDist(pos.x, pos.y, true);
+        }
 
         bool dragging = drag && _cameraController.CanDigInTrash;
         foreach (var obj in _openArt)
@@ -80,13 +84,14 @@ public class HandsController : MonoBehaviour
             {
                 UpdateNearbyTrash();
                 MoveTrash();
+                if (Time.time - _timeZChecked > _zTimeUpdate)
+                {
+                    var pos = _trashController.ClampBounds(_mousePrev);
+                     GetZDist(pos.x, pos.y);
+                }
             }
         }
-        if (Time.time - _timeZChecked > _zTimeUpdate)
-        {
-            var pos = _trashController.ClampBounds(_mousePrev);
-            GetZDist(pos.x, pos.y);
-        }
+        
     }
 
     private void UpdatePosition()

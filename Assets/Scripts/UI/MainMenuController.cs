@@ -9,6 +9,7 @@ using DG.Tweening;
 public class MainMenuController : MonoBehaviour
 {
     public RectTransform pnl_main;
+    public Image pnl_black;
     private CanvasGroup _group;
 
     private void Awake() {
@@ -33,6 +34,7 @@ public class MainMenuController : MonoBehaviour
         var mySequence = DOTween.Sequence();
         mySequence.AppendInterval(0.4f);
         mySequence.Append(pnl_main.DOAnchorPos(Vector2.up*-1080,0.8f,false).SetEase(Ease.InOutQuint));
+        pnl_black.DOFade(1f,0.4f).SetEase(Ease.InOutQuint);
         StartCoroutine(SceneChange("Game", 1.3f));
     }
 

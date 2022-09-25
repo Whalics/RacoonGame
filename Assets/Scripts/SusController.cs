@@ -29,6 +29,7 @@ public class SusController : MonoBehaviour
 
     public bool lightSound;
     public bool porchLightSound;
+    public bool blindsSound;
 
     public GameObject houseLightsOn;
     public GameObject houseCurtainsOpen;
@@ -116,7 +117,7 @@ public class SusController : MonoBehaviour
         }
 
         if(tummyTimer <= 0){
-            IncreaseStomachSus(stomachGrowlInfluence);
+            IncreaseStomachSus(stomachGrowlInfluence*2.5f);
             AudioManager.PlaySound("StomachLoud");
         }
     }
@@ -156,15 +157,23 @@ public class SusController : MonoBehaviour
         if(susmeter >= 3.5){
             curtainsOpen = true;
         }
-        else
-        curtainsOpen = false;
+        else{
+            curtainsOpen = false;
+            blindsSound = false;
+        }
 
         if(susmeter >= 6.5f){
             blindsOpen = true;
             curtainsOpen = false;
+            if(!blindsSound){
+                blindsSound = true;
+                AudioManager.PlaySound("Blinds");
+            }
             //AudioManager.PlaySound("DoorOpen");
         }
-        else blindsOpen = false;
+        else{ blindsOpen = false;
+        porchLightSound = false;
+        }
 
         if(susmeter >= 9f){
             cameraOn = true;
@@ -172,17 +181,22 @@ public class SusController : MonoBehaviour
             curtainsOpen = false;
             //AudioManager.PlaySound("BlindsOpen");
         }
-        else cameraOn = false;
+        else{
+            cameraOn = false;
+            
+        }
         //blinds peak
         if(susmeter >= 11f){
             porchlightOn = true;
             cameraOn = false;
             if(!porchLightSound){
-                AudioManager.PlaySound("Light2");
                 porchLightSound = true;
+                AudioManager.PlaySound("Light2");
             }
         }
-        else porchlightOn = false;
+        else{
+            porchlightOn = false;
+        }
         //camera
         if(susmeter >= 13f){
             doorSilloutte = true;
@@ -191,8 +205,8 @@ public class SusController : MonoBehaviour
 
         if(susmeter >= 15f && !doorOpen){
             doorOpen = true;
-                AudioManager.PlaySound("Running");
-                Caught();
+            AudioManager.PlaySound("Running");
+            Caught();
         }
     }
 

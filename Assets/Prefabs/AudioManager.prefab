@@ -76,7 +76,7 @@ MonoBehaviour:
     source: {fileID: 0}
     audioloop: 0
   - audioName: StomachQuiet
-    audioClip: {fileID: 8300000, guid: 781c6a7cb539e0748a7ce9704d12e694, type: 3}
+    audioClip: {fileID: 8300000, guid: ddf77bccf5a8c7349bc20622334342c4, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
     audioloop: 0
   - audioName: Running
     audioClip: {fileID: 8300000, guid: c0b257446f31e714386d145a327cd665, type: 3}
-    volume: 0.2
+    volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
     audioloop: 0
@@ -229,5 +229,11 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 1208ab256e49dc9478c5687853bd5ad7, type: 3}
     volume: 0.4
     pitchVariation: 0.4
+    source: {fileID: 0}
+    audioloop: 0
+  - audioName: Blinds
+    audioClip: {fileID: 8300000, guid: aa1bafbd1d01b614d9e4808ff281a23e, type: 3}
+    volume: 0.4
+    pitchVariation: 0.3
     source: {fileID: 0}
     audioloop: 0
