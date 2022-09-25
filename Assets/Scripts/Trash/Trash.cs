@@ -16,6 +16,7 @@ public class Trash : MonoBehaviour
     [SerializeField] private float _timeToMove = 4;
     [SerializeField] private float _timeToMoveVariation = 4;
     [SerializeField, ReadOnly] private Vector3 _vel;
+    [SerializeField] private List<string> _audioSounds;
 
     private Vector3 _homePos;
     private bool _returnToHome;
@@ -74,5 +75,10 @@ public class Trash : MonoBehaviour
         _lastTimePushed = Time.time;
         _returnToHome = false;
         _returnHomeTime = _timeToMove + Random.Range(-_timeToMoveVariation, _timeToMoveVariation);
+    }
+
+    public void PlaySound()
+    {
+        AudioManager.PlaySound(_audioSounds[Random.Range(0, _audioSounds.Count)]);
     }
 }

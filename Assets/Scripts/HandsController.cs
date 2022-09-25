@@ -51,7 +51,7 @@ public class HandsController : MonoBehaviour
 
         _drag = drag;
         var pos = _trashController.ClampBounds(_mousePrev);
-        GetZDist(pos.x, pos.y);
+        GetZDist(pos.x, pos.y, true);
 
         bool dragging = drag && _cameraController.CanDigInTrash;
         foreach (var obj in _openArt)
@@ -119,7 +119,7 @@ public class HandsController : MonoBehaviour
         }
     }
 
-    private void GetZDist(float x, float y)
+    private void GetZDist(float x, float y, bool playSound = false)
     {
         _timeZChecked = Time.time;
         var origin = _trashController.ClampBounds(new Vector3(x, y, 0));
@@ -128,6 +128,7 @@ public class HandsController : MonoBehaviour
         if (hit.collider)
         {
             _depthZ = hit.point.z;
+            if (playSound) hit.collider.GetComponent<Trash>().PlaySound();
         }
     }
 
