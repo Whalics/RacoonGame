@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SusController : MonoBehaviour
 {
-    [Range(0f,10f)] 
+    [Range(0f,15f)] 
     public float susmeter;
     public float susResetDuration;
     public float stomachGrowlInfluence;
@@ -25,6 +25,16 @@ public class SusController : MonoBehaviour
     public bool porchlightOn;
     public bool doorSilloutte;
     public bool doorOpen;
+    public bool caught = false;
+
+
+    public GameObject houseLightsOn;
+    public GameObject houseCurtainsOpen;
+    public GameObject houseBlindsOpen;
+    public GameObject houseCameraOn;
+    public GameObject housePorchlightOn;
+    public GameObject houseDoorSillouette;
+    public GameObject houseDoorOpen;
     
 
     void Awake(){
@@ -41,7 +51,7 @@ public class SusController : MonoBehaviour
         if(tummyTimer >= 0)
             DecreaseTummyTimer();
         
-        if(susResetDuration > 0)
+        if(susResetDuration > 0 && cameracontroller.hiding)
         susResetDuration-=Time.deltaTime;
         
         if(cameracontroller.hiding)
@@ -49,7 +59,23 @@ public class SusController : MonoBehaviour
 
         if(susmeter > 3 && !cameracontroller.hiding){
             susmeter += Time.deltaTime/2;
+            UpdateSceneSus();
         }
+
+        houseLightsOn.SetActive(insideLightOn);
+        
+        houseCurtainsOpen.SetActive(curtainsOpen);
+
+        houseBlindsOpen.SetActive(blindsOpen);
+
+        houseCameraOn.SetActive(cameraOn);
+        
+        housePorchlightOn.SetActive(porchlightOn);
+
+        houseDoorSillouette.SetActive(doorSilloutte);
+
+        houseDoorOpen.SetActive(doorOpen);
+
     }
 
 
@@ -76,50 +102,76 @@ public class SusController : MonoBehaviour
 
     public void IncreaseSus(float influence){
         ResetTummyTimer();
-        susResetDuration += 0.2f;
-        susmeter+=influence/4;
+        if(susResetDuration < 6)
+            susResetDuration += 0.2f;
+        if(susmeter < 15){
+            susmeter+=influence/4;
+        }
+        else{
+            Caught();
+        }
+        UpdateSceneSus();
     }
 
    public void IncreaseStomachSus(float influence){
-        susResetDuration += 10;
+        susResetDuration += 6;
         susmeter+=influence;
+        UpdateSceneSus();
     }
 
-    public void ChooseSusIndex(){
-        locationindex = Mathf.Floor(Random.Range(1f,5f));
-        Debug.Log(locationindex);
+    public void UpdateSceneSus(){
+        // locationindex = Mathf.Floor(Random.Range(1f,5f));
+        // Debug.Log(locationindex);
         
         //curtains open
-        if(locationindex == 1){
+        if(susmeter >= 1.2f){
             insideLightOn = true;
         }
         //light on
-        if(locationindex == 2){
+        if(susmeter >= 3.5){
             curtainsOpen = true;
         }
+        else
+        curtainsOpen = false;
 
-        if(locationindex == 3){
+        if(susmeter >= 6.5f){
             blindsOpen = true;
+            curtainsOpen = false;
             //AudioManager.PlaySound("DoorOpen");
         }
+        else blindsOpen = false;
 
-        if(locationindex == 4){
+        if(susmeter >= 9f){
             cameraOn = true;
+            blindsOpen = false;
+            curtainsOpen = false;
             //AudioManager.PlaySound("BlindsOpen");
         }
+        else cameraOn = false;
         //blinds peak
-        if(locationindex == 5){
+        if(susmeter >= 11f){
             porchlightOn = true;
+            cameraOn = false;
         }
+        else porchlightOn = false;
         //camera
-        if(locationindex == 6){
+        if(susmeter >= 13f){
             doorSilloutte = true;
+        }
+        else doorSilloutte = false;
+
+        if(susmeter >= 15f){
+            doorOpen = true;
         }
     }
 
     public void LowerSus(){
-        if(susResetDuration <= 0 && susmeter > 0)
+        if(susResetDuration <= 0 && ((susmeter > 0 && !insideLightOn) || (susmeter > 2 && insideLightOn)))
             susmeter-=Time.deltaTime;
+    }
+
+    public void Caught(){
+
     }
 
 
