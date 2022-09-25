@@ -87,11 +87,12 @@ public class HandsController : MonoBehaviour
                 if (Time.time - _timeZChecked > _zTimeUpdate)
                 {
                     var pos = _trashController.ClampBounds(_mousePrev);
-                     GetZDist(pos.x, pos.y);
+                    GetZDist(pos.x, pos.y);
                 }
+                
+                _susController.OnMoveGarbage(_mouseOffset.magnitude);
             }
         }
-        
     }
 
     private void UpdatePosition()

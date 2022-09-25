@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
         AudioFile s = Array.Find(instance.audioFiles, AudioFile => AudioFile.audioName == name);
         if (s == null)
         {
-            Debug.LogError("Sound name" + name + "not found!");
+            Debug.LogError("Sound name " + name + " not found!");
 
             return;
         }
@@ -79,7 +79,7 @@ public class AudioManager : MonoBehaviour
         AudioFile s = Array.Find(instance.audioFiles, AudioFile => AudioFile.audioName == name);
         if (s == null)
         {
-            Debug.LogError("Sound name" + name + "not found!");
+            Debug.LogError("Sound name " + name + " not found!");
             return;
         }
         else

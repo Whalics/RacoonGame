@@ -58,7 +58,7 @@ public class CameraController : MonoBehaviour
         LookUp();
     }
 
-    private void LookUp()
+    public void LookUp()
     {
         if (hiding || !inTrash) return;
         transform.DOMoveY(upY,0.5f).SetEase(Ease.OutExpo);

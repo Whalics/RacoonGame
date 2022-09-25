@@ -12,7 +12,7 @@ public class UserInput : MonoBehaviour
 
     [SerializeField] private bool _debug;
 
-    private static bool Paused => PauseMenuController.IsPaused;
+    private static bool Paused => PauseMenuController.IsPaused || PauseMenuController.GameOver;
 
     private void OnTogglePaused()
     {

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -11,24 +10,26 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private RectTransform _pauseUI;
     
     [SerializeField] private CanvasGroup _winGroup;
+    [SerializeField] private Image _face;
+    [SerializeField] private CanvasGroup _loseGroup;
     [SerializeField] private CanvasGroup _fadeBlackGroup;
 
-    private bool _win;
+    public static bool GameOver;
     
     private CanvasGroup _group;
     private bool _isPaused;
     private Coroutine _unpauseRoutine;
-
-    public Image img_black;
-
+    
     private void Awake() {
         _group = _pauseUI.GetComponent<CanvasGroup>();
         IsPaused = false;
         _isPaused = false;
     }
     
-    private void Start(){
-        img_black.DOFade(0f,1f).SetEase(Ease.InOutQuint);
+    private void Start() {
+        _fadeBlackGroup.gameObject.SetActive(true);
+        _fadeBlackGroup.alpha = 1;
+        _fadeBlackGroup.DOFade(0f, 1f).SetEase(Ease.InOutQuint);
         AudioManager.PlaySound("TrashEnter");
     }
 
@@ -41,17 +42,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (!_win && TrashEdible.EdibleItemsRemaining <= 0)
-        {
-            _winGroup.gameObject.SetActive(true);
-            _fadeBlackGroup.gameObject.SetActive(true);
-            _winGroup.alpha = 0;
-            _fadeBlackGroup.alpha = 0;
-            var mySequence = DOTween.Sequence();
-            mySequence.Append(_fadeBlackGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
-            mySequence.Append(_winGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
-            _win = true;
-        }
+        if (!GameOver && TrashEdible.EdibleItemsRemaining <= 0) Win();
     }
 
     private void OnDestroy()
@@ -96,5 +87,37 @@ public class PauseMenuController : MonoBehaviour
         mySequence.AppendInterval(0.4f).SetUpdate(true);
         mySequence.Append(_pauseUI.DOAnchorPos(Vector2.up*-1080,0.8f,false).SetEase(Ease.InOutQuint));
         StartCoroutine(MainMenuController.SceneChange("MainMenu",1.3f));
+    }
+
+    private void Win()
+    {
+        GameOver = true;
+        _winGroup.gameObject.SetActive(true);
+        _fadeBlackGroup.gameObject.SetActive(true);
+        _winGroup.alpha = 0;
+        _fadeBlackGroup.alpha = 0;
+        var mySequence = DOTween.Sequence();
+        mySequence.Append(_fadeBlackGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
+        mySequence.Append(_winGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
+    }
+    
+    public void Lose()
+    {
+        GameOver = true;
+        _loseGroup.gameObject.SetActive(true);
+        _fadeBlackGroup.gameObject.SetActive(true);
+        _loseGroup.alpha = 0;
+        _fadeBlackGroup.alpha = 0;
+        _face.gameObject.SetActive(true);
+        var mySequence = DOTween.Sequence();
+        mySequence.Append(_face.DOFade(1f, 0.4f).SetEase(Ease.OutCirc));
+        mySequence.AppendInterval(2f);
+        mySequence.Append(_face.DOFade(0f, 0.4f).SetEase(Ease.OutCirc));
+
+        var mySequence2 = DOTween.Sequence();
+        mySequence2.Append(_face.transform.DOScale(1f, 0.4f).SetEase(Ease.OutCirc));
+        mySequence2.AppendInterval(2f);
+        mySequence2.Append(_fadeBlackGroup.DOFade(1f,0.5f).SetEase(Ease.OutSine));
+        mySequence2.Append(_loseGroup.DOFade(1f,1f).SetEase(Ease.OutSine));
     }
 }

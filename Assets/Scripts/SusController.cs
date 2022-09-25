@@ -1,30 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.UI;
 
 public class SusController : MonoBehaviour
 {
     [SerializeField] private CameraController _player;
+    [SerializeField] private PauseMenuController _menu;
 
     [Header("Dead")]
-    [SerializeField] private bool _goingToDie;
-    [SerializeField] private bool _dead;
-    [SerializeField] private Transform face;
-    [SerializeField] private Image img_face;
+    [SerializeField, ReadOnly] private bool _goingToDie;
+    [SerializeField, ReadOnly] private bool _dead;
 
     [Header("Hunger")]
     [SerializeField, ReadOnly] private float _hunger;
     [SerializeField, ReadOnly] private int _timesGrowled;
-    [SerializeField] private float _hungerRate = 1;
-    [SerializeField] private float _hungerToGrowl = 6;
-    [SerializeField] private float _foodSatisfaction = 8;
+    [SerializeField] private float _hungerRate = 0.4f;
+    [SerializeField] private float _hungerToGrowl = 6f;
+    [SerializeField] private float _foodSatisfaction = 8f;
     [SerializeField] private float _timeToGetHungry = 1.5f;
 
     [Header("Sus")]
     [SerializeField, ReadOnly] private float _sus;
-    [SerializeField] private float _activeSusTime = 2;
+    [SerializeField] private float _activeSusTime = 2f;
     [SerializeField] private float _susHidingRate = -0.1f;
     [SerializeField] private float _susNormalRate = 0.01f;
     [SerializeField] private float _susFromEating = 0.1f;
@@ -35,21 +32,14 @@ public class SusController : MonoBehaviour
 
     [Header("Sus Levels")]
     [SerializeField, ReadOnly] private int _susLevel;
-    [SerializeField] private GameObject houseLightsOff;
     [SerializeField] private float _level1 = 1.2f;
-    [SerializeField] private GameObject houseLightsOn;
     [SerializeField] private float _level2 = 3.5f;
-    [SerializeField] private GameObject houseCurtainsOpen;
     [SerializeField] private float _level3 = 6.5f;
-    [SerializeField] private GameObject houseBlindsOpen;
     [SerializeField] private float _level4 = 9f;
-    [SerializeField] private GameObject houseCameraOn;
     [SerializeField] private float _level5 = 11f;
-    [SerializeField] private GameObject housePorchlightOn;
     [SerializeField] private float _level6 = 13f;
-    [SerializeField] private GameObject houseDoorSillouette;
     [SerializeField] private float _level7 = 15f;
-    [SerializeField] private GameObject houseDoorOpen;
+    [SerializeField] private List<GameObject> _houseArt;
 
     [Header("Sniff")]
     [SerializeField] private float _timeToSniff = 8;
@@ -74,6 +64,7 @@ public class SusController : MonoBehaviour
     private void OnValidate()
     {
         if (_player == null) _player = FindObjectOfType<CameraController>();
+        if (_menu == null) _menu = FindObjectOfType<PauseMenuController>();
     }
 
     private void Update()
@@ -83,7 +74,9 @@ public class SusController : MonoBehaviour
         {
             if (!_player.Hiding)
             {
-                Caught();
+                _player.LookUp();
+                _menu.Lose();
+                _dead = true;
             }
             return;
         }
@@ -101,9 +94,6 @@ public class SusController : MonoBehaviour
         if (_timesGrowled > 0) _timesGrowled--;
         AdjustSus(_susFromEating);
     }
-    
-    public void OnClickGarbage() => AdjustSus(_susFromClickingGarbage);
-    public void OnMoveGarbage(float dist) => AdjustSus(dist * _susFromMovingGarbage);
 
     private void UpdateHunger()
     {
@@ -121,7 +111,9 @@ public class SusController : MonoBehaviour
 
     private void Growl()
     {
+        AudioManager.PlaySound(_timesGrowled == 0 ? "StomachQuiet" : "StomachLoud");
         _timesGrowled++;
+        _hunger = 0;
         AdjustSus(_susFromGrowl * _timesGrowled);
     }
 
@@ -132,6 +124,9 @@ public class SusController : MonoBehaviour
         // Decrease Sus
         AdjustSus(-(_player.Hiding ? _susHidingRate : _susNormalRate) * Time.deltaTime);
     }
+    
+    public void OnClickGarbage() => AdjustSus(_susFromClickingGarbage);
+    public void OnMoveGarbage(float dist) => AdjustSus(dist * _susFromMovingGarbage);
     
     private void AdjustSus(float amount)
     {
@@ -144,6 +139,7 @@ public class SusController : MonoBehaviour
         {
             _susLevel = susLevel;
             UpdateHouseArt();
+            SusLevelSounds();
 
             if (_susLevel == 7) _goingToDie = true;
         }
@@ -151,14 +147,26 @@ public class SusController : MonoBehaviour
 
     private void UpdateHouseArt()
     {
-        houseLightsOff.SetActive(_susLevel == 0);
-        houseLightsOn.SetActive(_susLevel == 1);
-        houseCurtainsOpen.SetActive(_susLevel == 2);
-        houseBlindsOpen.SetActive(_susLevel == 3);
-        houseCameraOn.SetActive(_susLevel == 4);
-        housePorchlightOn.SetActive(_susLevel == 5);
-        houseDoorSillouette.SetActive(_susLevel == 6);
-        houseDoorOpen.SetActive(_susLevel == 7);
+        for (int i = 0; i < _houseArt.Count; i++)
+        {
+            _houseArt[i].SetActive(_susLevel == i);
+        }
+    }
+
+    private void SusLevelSounds()
+    {
+        string soundName = _susLevel switch
+        {
+            1 => "Light1",
+            3 => "Blinds",
+            //4 => "BlindsOpen",
+            //4 => "DoorOpen",
+            5 => "Light2",
+            6 => "Running",
+            7 => "Running",
+            _ => ""
+        };
+        if (soundName != "") AudioManager.PlaySound(soundName);
     }
 
     private int GetSusLevel(float sus)
@@ -190,12 +198,5 @@ public class SusController : MonoBehaviour
     {
         AudioManager.PlaySound(_sniffSounds[Random.Range(0, _sniffSounds.Count)]);
         AdjustSus(_susFromSniff);
-    }
-    
-    public void Caught()
-    {
-        _dead = true;
-        img_face.DOFade(1f, 0.4f).SetEase(Ease.OutCirc);
-        face.DOScale(1f, 0.4f).SetEase(Ease.OutCirc);
     }
 }
