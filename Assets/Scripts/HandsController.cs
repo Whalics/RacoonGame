@@ -9,7 +9,6 @@ public class HandsController : MonoBehaviour
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private float _speed;
     [SerializeField] private float _influenceRadius;
-    [SerializeField] private float _pushForce;
     [SerializeField, ReadOnly] private bool _drag;
     
     [Header("Left")]
@@ -22,7 +21,7 @@ public class HandsController : MonoBehaviour
     [SerializeField] private Vector3 _rightRest;
     [SerializeField] private Vector3 _rightDrag;
 
-    private List<Trash> _nearbyTrash;
+    private List<TrashGrab> _nearbyTrash;
     private Vector3 _mousePrev;
     private Vector3 _mouseOffset;
 
@@ -45,19 +44,6 @@ public class HandsController : MonoBehaviour
         suscontroller.IncreaseSus(0.2f);
 
         _drag = drag;
-        if (drag)
-        {
-            _nearbyTrash = new List<Trash>();
-            var pos = _mousePrev;
-            pos.z = 1;  
-            foreach (var trash in Trash.AllTrash)
-            {
-                if (Vector3.Distance(pos, trash.transform.position) < _influenceRadius)
-                {
-                    _nearbyTrash.Add(trash);
-                }
-            }
-        }
     }
 
     private void OnValidate()
@@ -70,7 +56,11 @@ public class HandsController : MonoBehaviour
         if (_cameraController.CanDigInTrash)
         {
             UpdatePosition();
-            if (_drag) MoveTrash();
+            if (_drag)
+            {
+                UpdateNearbyTrash();
+                MoveTrash();
+            }
         }
     }
 
@@ -89,11 +79,26 @@ public class HandsController : MonoBehaviour
         _mousePrev = mPos;
     }
 
+    private void UpdateNearbyTrash()
+    {
+        _nearbyTrash = new List<TrashGrab>();
+        var pos = _mousePrev;
+        pos.z = 1;  
+        foreach (var trash in Trash.AllTrash)
+        {
+            float dist = Vector3.Distance(pos, trash.transform.position);
+            if (dist < _influenceRadius)
+            {
+                _nearbyTrash.Add(new TrashGrab(trash, dist));
+            }
+        }
+    }
+
     private void MoveTrash()
     {
         foreach (var trash in _nearbyTrash)
         {
-            trash.Push(_mouseOffset * _pushForce);
+            trash.Trash.Push(_mouseOffset * _influenceRadius / trash.Dist);
         }
     }
 }
@@ -102,4 +107,10 @@ internal struct TrashGrab
 {
     public Trash Trash;
     public float Dist;
+
+    public TrashGrab(Trash trash, float dist)
+    {
+        Trash = trash;
+        Dist = dist;
+    }
 }
