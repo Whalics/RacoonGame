@@ -34,6 +34,7 @@ public class CameraController : MonoBehaviour
 
     public Image darkness;
 
+    public bool Hiding => hiding;
     public Camera MainCam => cam;
     public bool CanDigInTrash => inTrash && !hiding;
 
