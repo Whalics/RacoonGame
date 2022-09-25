@@ -98,7 +98,7 @@ public class HandsController : MonoBehaviour
     {
         foreach (var trash in _nearbyTrash)
         {
-            trash.Trash.Push(_mouseOffset * _influenceRadius / trash.Dist);
+            trash.Trash.Push(_mouseOffset * trash.Dist / _influenceRadius);
         }
     }
 }

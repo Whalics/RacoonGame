@@ -900,7 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraController: {fileID: 1630038938}
   _speed: 10
-  _influenceRadius: 1.5
+  _influenceRadius: 2
   _drag: 0
   _left: {fileID: 528487915}
   _leftRest: {x: -6, y: 0, z: 0}
@@ -1078,12 +1078,12 @@ MonoBehaviour:
   - {fileID: 629783174, guid: 8094175803f18c4469b505c63d97336e, type: 3}
   _xDist: 8
   _yDist: 5
-  _separation: 1
-  _random: 0.5
+  _separation: 1.4
+  _random: 0.75
   _layerCount: 5
   _zMin: 1
   _zMax: 5
-  _extraRandomObjects: 50
+  _extraRandomObjects: 40
 --- !u!1 &1959338385
 GameObject:
   m_ObjectHideFlags: 0
