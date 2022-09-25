@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class TrashEdible : Trash
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool _eat;
+    
+    protected override void Update()
     {
-        
+        if (_eat) return;
+        base.Update();
+    }
+    
+    public override void Push(Vector3 dir)
+    {
+        _eat = true;
+        StartCoroutine(AnimateToFront());
+        AllTrash.Remove(this);
+        GetComponent<Collider>().enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator AnimateToFront()
     {
-        
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }

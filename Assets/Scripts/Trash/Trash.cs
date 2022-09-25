@@ -9,12 +9,12 @@ public class Trash : MonoBehaviour
     public static List<Trash> AllTrash = new List<Trash>();
 
     [SerializeField] private TrashController _controller;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _returnSpeed;
-    [SerializeField, Range(0, 1)] private float _drag;
-    [SerializeField] private float _dragSpeed;
-    [SerializeField] private float _timeToMove;
-    [SerializeField] private float _timeToMoveVariation;
+    [SerializeField] private float _speed = 4;
+    [SerializeField] private float _returnSpeed = 0.02f;
+    [SerializeField, Range(0, 1)] private float _drag = 0.8f;
+    [SerializeField] private float _dragSpeed = 10;
+    [SerializeField] private float _timeToMove = 4;
+    [SerializeField] private float _timeToMoveVariation = 4;
     [SerializeField, ReadOnly] private Vector3 _vel;
 
     private Vector3 _homePos;
@@ -43,7 +43,7 @@ public class Trash : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0f, 360f)));
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_pushedLastFrame)
         {
@@ -65,7 +65,7 @@ public class Trash : MonoBehaviour
         }
     }
 
-    public void Push(Vector3 dir)
+    public virtual void Push(Vector3 dir)
     {
         var vel = dir.normalized;
         transform.position = _controller.ClampBounds(transform.position + dir);
