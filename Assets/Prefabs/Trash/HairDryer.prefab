@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6763622204019459544, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_Name
-      value: SnackBag
+      value: HairDryer
       objectReference: {fileID: 0}
     - target: {fileID: 6763622204019459545, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_RootOrder
@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763622204019459545, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11
+      value: -0.9967457
       objectReference: {fileID: 0}
     - target: {fileID: 6763622204019459545, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.03
+      value: -2.7805107
       objectReference: {fileID: 0}
     - target: {fileID: 6763622204019459545, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_LocalPosition.z
@@ -74,18 +74,40 @@ PrefabInstance:
     - target: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1931005387, guid: 8094175803f18c4469b505c63d97336e, type: 3}
+      objectReference: {fileID: 21300000, guid: 2edaa826466ddce48847565d71aed7e2, type: 3}
     - target: {fileID: 6763622204019459546, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7305837346088481962, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 7305837346088481962, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 4.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305837346088481962, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+      propertyPath: m_Center.x
+      value: 1.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+--- !u!1 &9211145897789130731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6763622204019459544, guid: 7ac620ede70d9ec49bb9af33caab8add, type: 3}
+  m_PrefabInstance: {fileID: 2452675000822579763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &376968694
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211145897789130731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.32, y: 1.9, z: 0.2}
+  m_Center: {x: 0, y: 0.63, z: 0}
