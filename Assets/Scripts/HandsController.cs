@@ -129,7 +129,7 @@ public class HandsController : MonoBehaviour
         _timeZChecked = Time.time;
         var origin = _trashController.ClampBounds(new Vector3(x, y, 0));
         origin.z = -10;
-        Physics.Raycast(origin, Vector3.forward, out var hit, 20, _trashController.TrashLayer);
+        Physics.Raycast(origin, Vector3.forward, out var hit, _trashController.TrashLayer);
         if (hit.collider)
         {
             _depthZ = hit.point.z;
