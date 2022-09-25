@@ -64,8 +64,13 @@ public class SusController : MonoBehaviour
         if(susResetDuration > 0 && cameracontroller.hiding)
         susResetDuration-=Time.deltaTime;
         
-        if(cameracontroller.hiding)
-        LowerSus();
+        if(cameracontroller.hiding && tummyTimer > 0){
+            LowerSus();
+        }
+
+        if(tummyTimer < 0){
+            susmeter+=Time.deltaTime;
+        }
 
         if(susmeter > 3 && !cameracontroller.hiding){
             susmeter += Time.deltaTime/2;
@@ -130,7 +135,7 @@ public class SusController : MonoBehaviour
     public void IncreaseSus(float influence){
         ResetTummyTimer();
         if(susResetDuration < 4)
-            susResetDuration += 0.2f;
+            susResetDuration += 0.1f;
         if(susmeter < 15){
             susmeter+=influence/3;
         }
@@ -141,7 +146,7 @@ public class SusController : MonoBehaviour
     }
 
    public void IncreaseStomachSus(float influence){
-        susResetDuration += 6;
+        susResetDuration += 3;
         susmeter+=influence;
         UpdateSceneSus();
     }

@@ -36,6 +36,7 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void StartGame(){
+        AudioManager.PlaySound("Paper1");
         var mySequence = DOTween.Sequence();
         mySequence.AppendInterval(0.1f);
         mySequence.Append(pnl_black.DOFade(1f,0.5f).SetEase(Ease.OutSine));
