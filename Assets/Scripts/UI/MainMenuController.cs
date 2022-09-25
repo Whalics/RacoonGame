@@ -11,6 +11,7 @@ public class MainMenuController : MonoBehaviour
     public RectTransform pnl_main;
     public Image pnl_black;
     private CanvasGroup _group;
+    public GameObject tutorial;
 
     private void Awake() {
         _group = pnl_main.GetComponent<CanvasGroup>();
@@ -36,17 +37,30 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame(){
         var mySequence = DOTween.Sequence();
-        var mySequence2 = DOTween.Sequence();
-        mySequence.AppendInterval(0.4f);
-        mySequence2.AppendInterval(0.6f);
-        mySequence.Append(_group.DOFade(0f,0.5f).SetEase(Ease.OutSine));
-        mySequence2.Append(pnl_black.DOFade(1f,0.4f).SetEase(Ease.InOutQuint));
-        StartCoroutine(SceneChange("Game", 1.6f));
+        mySequence.AppendInterval(0.1f);
+        mySequence.Append(pnl_black.DOFade(1f,0.5f).SetEase(Ease.OutSine));
+        StartCoroutine(SceneChange("Game", 0.6f));
     }
 
     public static IEnumerator SceneChange(string scene, float s){
         yield return new WaitForSecondsRealtime(s);
         SceneManager.LoadScene(scene);
+    }
+
+    public void Tutorial(){
+        tutorial.SetActive(true);
+        AudioManager.PlaySound("Paper1");
+        var mySequence = DOTween.Sequence();
+        var mySequence2 = DOTween.Sequence();
+        mySequence.AppendInterval(0.4f);
+        mySequence2.AppendInterval(0.6f);
+        mySequence.Append(_group.DOFade(0f,0.5f).SetEase(Ease.OutSine));
+        mySequence2.Append(pnl_black.DOFade(1f,0.5f).SetEase(Ease.OutSine));
+        
+        mySequence.Append(tutorial.GetComponent<Image>().DOFade(1f,0.4f).SetEase(Ease.OutSine));
+         mySequence2.Append(pnl_black.DOFade(0f,0.5f).SetEase(Ease.OutSine));
+        //mySequence.AppendInterval(0.4f);
+        //mySequence.Append(tutorial.GetComponent<Image>().DOFade(1f,0.5f).SetEase(Ease.OutSine));
     }
 
     public void QuitGame(){
