@@ -1578,10 +1578,10 @@ MonoBehaviour:
   _drag: 0
   _zTimeUpdate: 0
   _left: {fileID: 528487915}
-  _leftRest: {x: -6, y: 0, z: 0}
+  _leftRest: {x: -6, y: -3, z: 0}
   _leftDrag: {x: 0, y: 0, z: 0}
   _right: {fileID: 495184203}
-  _rightRest: {x: 6, y: 0, z: 0}
+  _rightRest: {x: 6, y: -3, z: 0}
   _rightDrag: {x: 0, y: 0, z: 0}
   _openArt:
   - {fileID: 1959338385}
@@ -1851,8 +1851,12 @@ MonoBehaviour:
     Trash: {fileID: 4581287566114603543, guid: 81ae53caba085a34dafb8ad5c26dbf49, type: 3}
   - Weight: 1.6
     Trash: {fileID: 4581287566114603543, guid: fb0a24598b422c240b0d6910cb003f8f, type: 3}
+  - Weight: 0.6
+    Trash: {fileID: 4581287566114603543, guid: 04a3b8ec5aefa7749a7e5289d61c9428, type: 3}
   _xDist: 7.5
+  _xAmount: 5
   _yDist: 4.5
+  _yAmount: 3
   _separation: 3
   _random: 1.5
   _layerCount: 5

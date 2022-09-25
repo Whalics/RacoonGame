@@ -8,9 +8,11 @@ public class TrashController : MonoBehaviour
     [SerializeField] private LayerMask _trashLayer;
     
     [SerializeField] private List<WeightedTrash> _trash;
-    [SerializeField] private float _xDist = 8;
-    [SerializeField] private float _yDist = 5;
-    [SerializeField] private float _separation = 2.5f;
+    [SerializeField] private float _xDist = 7.5f;
+    [SerializeField] private float _xAmount = 5;
+    [SerializeField] private float _yDist = 4.5f;
+    [SerializeField] private float _yAmount = 3;
+    [SerializeField] private float _separation = 3f;
     [SerializeField] private float _random = 1.5f;
 
     [SerializeField] private float _layerCount = 8;
@@ -82,14 +84,26 @@ public class TrashController : MonoBehaviour
     {
         var layerObj = new GameObject("Layer: " + z).transform;
         var p = transform.position;
-        for (float x = p.x - _xDist; x <= p.x + _xDist; x += _separation)
+        for (float xNum = 0; xNum <= _xAmount; xNum++)
         {
-            for (float y = p.y - _yDist; y <= p.y + _yDist; y += _separation)
+            float x = p.x - _xDist + xNum * 2 * _xDist / _xAmount;
+            for (float yNum = 0; yNum <= _yAmount; yNum++)
+            {
+                float y = p.y - _yDist + yNum * 2 * _yDist / _yAmount;
+                var pos = new Vector3(x, y, z) + _random * (Vector3)Random.insideUnitCircle;
+                CreateNewTrash(layerObj, ClampBounds(pos));
+            }
+        }
+        /*
+        for (float x = p.x - _xDist; x <= p.x + _xDist; x += _separation - 0.01f)
+        {
+            for (float y = p.y - _yDist; y <= p.y + _yDist; y += _separation - 0.01f)
             {
                 var pos = new Vector3(x, y, z) + _random * (Vector3)Random.insideUnitCircle;
                 CreateNewTrash(layerObj, pos);
             }
         }
+        */
     }
 
     private void CreateNewTrash(Transform parent, Vector3 pos)
