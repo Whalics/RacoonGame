@@ -18,6 +18,15 @@ public class SusController : MonoBehaviour
     public float locationindex;
     public CameraController cameracontroller;
 
+    public bool insideLightOn; //2 sus
+    public bool curtainsOpen;
+    public bool blindsOpen;
+    public bool cameraOn;
+    public bool porchlightOn;
+    public bool doorSilloutte;
+    public bool doorOpen;
+    
+
     void Awake(){
         cameracontroller = GameObject.Find("CameraAnchor").GetComponent<CameraController>();
     }
@@ -74,10 +83,37 @@ public class SusController : MonoBehaviour
     public void ChooseSusIndex(){
         locationindex = Mathf.Floor(Random.Range(1f,5f));
         Debug.Log(locationindex);
+        
+        //curtains open
+        if(locationindex == 1){
+        
+        }
+        //light on
+        if(locationindex == 2){
+        
+        }
+
+        if(locationindex == 3){
+            AudioManager.PlaySound("DoorOpen");
+        }
+
+        if(locationindex == 4){
+            AudioManager.PlaySound("BlindsOpen");
+        }
+        //blinds peak
+        if(locationindex == 5){
+
+        }
+        //camera
+        if(locationindex == 6){
+
+        }
     }
 
     public void LowerSus(){
         if(susResetDuration <= 0 && susmeter > 0)
             susmeter-=Time.deltaTime;
     }
+
+
 }
