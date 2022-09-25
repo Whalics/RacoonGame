@@ -42,7 +42,7 @@ public class HandsController : MonoBehaviour
 
     private void Drag(bool drag)
     {
-        suscontroller.IncreaseSus(0.2f);
+        if (_cameraController.CanDigInTrash) suscontroller.IncreaseSus(0.2f);
 
         _drag = drag;
     }
