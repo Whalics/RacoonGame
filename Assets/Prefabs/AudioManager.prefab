@@ -173,7 +173,7 @@ MonoBehaviour:
     audioloop: 1
   - audioName: Screech
     audioClip: {fileID: 8300000, guid: 7866f2e8785b7b14984d01d54a445d52, type: 3}
-    volume: 0.2
+    volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
     mixer: {fileID: 0}
@@ -187,15 +187,15 @@ MonoBehaviour:
     audioloop: 0
   - audioName: Light1
     audioClip: {fileID: 8300000, guid: c023fac5aa57fa4408b851130e5f414f, type: 3}
-    volume: 0.2
-    pitchVariation: 0.2
+    volume: 0.7
+    pitchVariation: 0.05
     source: {fileID: 0}
     mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 0
   - audioName: Light2
     audioClip: {fileID: 8300000, guid: e34d4ee1414327842a80da96652c98c3, type: 3}
-    volume: 0.2
-    pitchVariation: 0.2
+    volume: 0.7
+    pitchVariation: 0.05
     source: {fileID: 0}
     mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 0
