@@ -64,20 +64,25 @@ public class SusController : MonoBehaviour
         
         if(tummyTimer <= 10 && !growled){
             growled = true;
-            IncreaseSus(stomachGrowlInfluence);
+            IncreaseStomachSus(stomachGrowlInfluence);
             AudioManager.PlaySound("StomachQuiet");
         }
 
         if(tummyTimer <= 0){
-            IncreaseSus(stomachGrowlInfluence);
+            IncreaseStomachSus(stomachGrowlInfluence);
             AudioManager.PlaySound("StomachLoud");
         }
     }
 
     public void IncreaseSus(float influence){
         ResetTummyTimer();
-        susResetDuration = 2;
-        susmeter+=influence/2;
+        susResetDuration += 0.2f;
+        susmeter+=influence/4;
+    }
+
+   public void IncreaseStomachSus(float influence){
+        susResetDuration += 10;
+        susmeter+=influence;
     }
 
     public void ChooseSusIndex(){
@@ -86,27 +91,29 @@ public class SusController : MonoBehaviour
         
         //curtains open
         if(locationindex == 1){
-        
+            insideLightOn = true;
         }
         //light on
         if(locationindex == 2){
-        
+            curtainsOpen = true;
         }
 
         if(locationindex == 3){
-            AudioManager.PlaySound("DoorOpen");
+            blindsOpen = true;
+            //AudioManager.PlaySound("DoorOpen");
         }
 
         if(locationindex == 4){
-            AudioManager.PlaySound("BlindsOpen");
+            cameraOn = true;
+            //AudioManager.PlaySound("BlindsOpen");
         }
         //blinds peak
         if(locationindex == 5){
-
+            porchlightOn = true;
         }
         //camera
         if(locationindex == 6){
-
+            doorSilloutte = true;
         }
     }
 
