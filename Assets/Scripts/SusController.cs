@@ -27,6 +27,8 @@ public class SusController : MonoBehaviour
     public bool doorOpen;
     public bool caught = false;
 
+    public bool lightSound;
+    public bool porchLightSound;
 
     public GameObject houseLightsOn;
     public GameObject houseCurtainsOpen;
@@ -35,6 +37,8 @@ public class SusController : MonoBehaviour
     public GameObject housePorchlightOn;
     public GameObject houseDoorSillouette;
     public GameObject houseDoorOpen;
+
+    public float soundRandomizer;
     
 
     void Awake(){
@@ -60,6 +64,23 @@ public class SusController : MonoBehaviour
         if(susmeter > 3 && !cameracontroller.hiding){
             susmeter += Time.deltaTime/2;
             UpdateSceneSus();
+        }
+
+        if(soundRandomizer > 0){
+            soundRandomizer-=Time.deltaTime;
+        }
+        else{
+            soundRandomizer = Random.Range(3,12);
+            int soundRandom = Random.Range(1,5);
+            if(soundRandom == 1){
+                AudioManager.PlaySound("Sniff1");
+            }
+            if(soundRandom == 2)
+                AudioManager.PlaySound("Sniff2");
+            if(soundRandom == 3)
+                AudioManager.PlaySound("Sniff3");
+            if(soundRandom == 4)
+                AudioManager.PlaySound("Sniff4");
         }
 
         houseLightsOn.SetActive(insideLightOn);
@@ -102,10 +123,10 @@ public class SusController : MonoBehaviour
 
     public void IncreaseSus(float influence){
         ResetTummyTimer();
-        if(susResetDuration < 6)
+        if(susResetDuration < 4)
             susResetDuration += 0.2f;
         if(susmeter < 15){
-            susmeter+=influence/4;
+            susmeter+=influence/3;
         }
         else{
             Caught();
@@ -126,6 +147,10 @@ public class SusController : MonoBehaviour
         //curtains open
         if(susmeter >= 1.2f){
             insideLightOn = true;
+            if(!lightSound){
+                AudioManager.PlaySound("Light1");
+                lightSound = true;
+            }
         }
         //light on
         if(susmeter >= 3.5){
@@ -152,6 +177,10 @@ public class SusController : MonoBehaviour
         if(susmeter >= 11f){
             porchlightOn = true;
             cameraOn = false;
+            if(!porchLightSound){
+                AudioManager.PlaySound("Light2");
+                porchLightSound = true;
+            }
         }
         else porchlightOn = false;
         //camera
@@ -160,8 +189,10 @@ public class SusController : MonoBehaviour
         }
         else doorSilloutte = false;
 
-        if(susmeter >= 15f){
+        if(susmeter >= 15f && !doorOpen){
             doorOpen = true;
+                AudioManager.PlaySound("Running");
+                Caught();
         }
     }
 

@@ -85,4 +85,33 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
+
+    public static IEnumerator PlayFade(String name, float duration, float startVol, float targetVol){
+        AudioFile s = Array.Find(instance.audioFiles, AudioFile => AudioFile.audioName == name);
+        if (s == null)
+        {
+            Debug.LogError("Sound name" + name + "not found!");
+
+            yield break;
+        }
+        else
+        {
+            if (s.pitchVariation > 0)
+                s.source.pitch = 1f + UnityEngine.Random.Range(-s.pitchVariation, s.pitchVariation);
+                
+            s.source.volume = startVol;
+            s.source.Play();
+            float currentTime = 0;
+            float start = s.source.volume;
+           
+            while(currentTime < duration){
+            currentTime += Time.deltaTime;
+            s.source.volume = Mathf.Lerp(start, targetVol, currentTime/duration);
+            yield return null;
+        }
+        
+        yield break;
+
+        }
+    }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [System.Serializable]
 public class AudioFile
@@ -18,4 +19,7 @@ public class AudioFile
     [HideInInspector]
     public AudioSource source;
 
+    //public AudioMixerGroup mixer;
+
+    public bool audioloop;
 }

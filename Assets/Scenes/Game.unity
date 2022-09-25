@@ -417,6 +417,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7440682664511519097, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
+      propertyPath: audioFiles.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440682664511519097, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
+      propertyPath: audioFiles.Array.data[17].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440682664511519097, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
+      propertyPath: audioFiles.Array.data[17].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 705b8675516563741a072fa82776bfae, type: 3}
+    - target: {fileID: 7440682664511519097, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
+      propertyPath: audioFiles.Array.data[17].audioName
+      value: Cicades
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440682664511519097, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
+      propertyPath: audioFiles.Array.data[17].audioloop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440682664511519097, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
+      propertyPath: audioFiles.Array.data[17].pitchVariation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440682664511519098, guid: de59f5c9aced32147a917a368e11a8c8, type: 3}
       propertyPath: m_RootOrder
       value: 7

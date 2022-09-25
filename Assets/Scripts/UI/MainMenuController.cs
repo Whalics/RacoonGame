@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     }
 
     private void Start() { 
+        StartCoroutine(AudioManager.PlayFade("Cicades",4f,0f,0.5f));
         Time.timeScale = 1; 
         TitleEnter();
     }
