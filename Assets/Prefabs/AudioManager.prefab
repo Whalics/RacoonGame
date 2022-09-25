@@ -50,190 +50,223 @@ MonoBehaviour:
     volume: 0
     pitchVariation: 0
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: TrashLidOpen
     audioClip: {fileID: 8300000, guid: 16881d4b3ddc65c4b838023c090d2f28, type: 3}
     volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: TrashLidClose
     audioClip: {fileID: 8300000, guid: 077fe1cabefab334ea8bf3458a29aa4d, type: 3}
     volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Plastic1
     audioClip: {fileID: 8300000, guid: bcb87ab1610e96844a39f8b9549f078b, type: 3}
     volume: 0.4
     pitchVariation: 0.3
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Plastic2
     audioClip: {fileID: 8300000, guid: 6eef67eda8b2cf74f9f4dd7844190e4e, type: 3}
     volume: 0.4
     pitchVariation: 0.3
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: StomachQuiet
     audioClip: {fileID: 8300000, guid: ddf77bccf5a8c7349bc20622334342c4, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: StomachLoud
     audioClip: {fileID: 8300000, guid: a22d917293af2724a9d4b1e218d3b21c, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Sniff1
     audioClip: {fileID: 8300000, guid: b94c02c6b29c45c4c993eab7a872ab43, type: 3}
     volume: 0.1
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Sniff2
     audioClip: {fileID: 8300000, guid: 90f3cfe3876e8b0469a6beb0d7353881, type: 3}
     volume: 0.1
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Sniff3
     audioClip: {fileID: 8300000, guid: d195827b657df0946adb5d0cb94f2006, type: 3}
     volume: 0.1
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Sniff4
     audioClip: {fileID: 8300000, guid: e3cdbe40e1b3ba94abcb019f186cfd2e, type: 3}
     volume: 0.1
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Eat1
     audioClip: {fileID: 8300000, guid: 8be246b88abd259419f1412687800ee6, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Eat2
     audioClip: {fileID: 8300000, guid: be79b33b47c77554cb27e9a71d8aa27f, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Eat3
     audioClip: {fileID: 8300000, guid: e789ba4d05f5f1345a760dcffff31e5c, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Munch1
     audioClip: {fileID: 8300000, guid: 5fd286ae78a108542a31b3d21d6eaaec, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Munch2
     audioClip: {fileID: 8300000, guid: 59014583e691555478615763cee91ab1, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Tutorial
     audioClip: {fileID: 8300000, guid: 08de4bb91b16ad649bb4974df2dacfce, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Cicades
     audioClip: {fileID: 8300000, guid: 705b8675516563741a072fa82776bfae, type: 3}
     volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 1
   - audioName: Screech
     audioClip: {fileID: 8300000, guid: 7866f2e8785b7b14984d01d54a445d52, type: 3}
     volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Running
     audioClip: {fileID: 8300000, guid: c0b257446f31e714386d145a327cd665, type: 3}
     volume: 1
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 0
   - audioName: Light1
     audioClip: {fileID: 8300000, guid: c023fac5aa57fa4408b851130e5f414f, type: 3}
     volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 0
   - audioName: Light2
     audioClip: {fileID: 8300000, guid: e34d4ee1414327842a80da96652c98c3, type: 3}
     volume: 0.2
     pitchVariation: 0.2
     source: {fileID: 0}
+    mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 0
   - audioName: Can1
     audioClip: {fileID: 8300000, guid: cba6fc50fcde64c4d95959ec816a23a9, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Can2
     audioClip: {fileID: 8300000, guid: 78d4915d1b948d946bd21e046094ae60, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Can3
     audioClip: {fileID: 8300000, guid: 6a13e320359fc2b48b1ad1efa533710f, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Paper1
     audioClip: {fileID: 8300000, guid: c20d1085b7e722d48aa5525909383ab4, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Paper2
     audioClip: {fileID: 8300000, guid: 4012a694ac79dd143a7671ac06bbf493, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Bottle1
     audioClip: {fileID: 8300000, guid: 324a4caea324dcf4c8fd7ea3b4207fe5, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Bottle2
     audioClip: {fileID: 8300000, guid: 2efcbafce36fa7e48878dd53fb610593, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Bottle3
     audioClip: {fileID: 8300000, guid: 14a1e52b00c2206469169d21915eab15, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Bottle4
     audioClip: {fileID: 8300000, guid: 1208ab256e49dc9478c5687853bd5ad7, type: 3}
     volume: 0.4
     pitchVariation: 0.4
     source: {fileID: 0}
+    mixer: {fileID: 0}
     audioloop: 0
   - audioName: Blinds
     audioClip: {fileID: 8300000, guid: aa1bafbd1d01b614d9e4808ff281a23e, type: 3}
     volume: 0.4
     pitchVariation: 0.3
     source: {fileID: 0}
+    mixer: {fileID: 956022631537974424, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
     audioloop: 0
+  _defaultMixer: {fileID: 24300002, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}

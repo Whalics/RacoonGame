@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
     public AudioFile[] audioFiles;
+    public AudioMixerGroup _defaultMixer;
 
     private float timeToReset;
     private bool timerIsSet = false;
@@ -49,6 +50,7 @@ public class AudioManager : MonoBehaviour
 
             s.source.volume = s.volume;
 
+            s.source.outputAudioMixerGroup = s.mixer ? s.mixer : _defaultMixer;
         }
     }
 

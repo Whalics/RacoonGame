@@ -19,7 +19,7 @@ public class AudioFile
     [HideInInspector]
     public AudioSource source;
 
-    //public AudioMixerGroup mixer;
+    public AudioMixerGroup mixer;
 
     public bool audioloop;
 }

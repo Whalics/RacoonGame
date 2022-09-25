@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using EZCameraShake;
+using UnityEngine.Audio;
 
 public class CameraController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class CameraController : MonoBehaviour
     public bool inTrash = false;
     public bool hiding = false;
 
+    public AudioMixer _mixer;
     public Transform LeftHand;
     public Transform RightHand;
     public Vector2 rightHidingHandPos = new Vector2(7.2f,-2.6f);
@@ -87,10 +89,11 @@ public class CameraController : MonoBehaviour
         {
             AudioManager.PlaySound("TrashLidClose");
             hiding = true;
+            darkness.DOFade(0.85f,0.3f).SetEase(Ease.InCirc);
             cam.DOOrthoSize(closeOrtho,0.3f).SetEase(Ease.OutQuad);
             LeftHand.DOMove(leftHidingHandPos,0.5f).SetEase(Ease.OutExpo);
             RightHand.DOMove(rightHidingHandPos,0.5f).SetEase(Ease.OutExpo);
-            darkness.DOFade(0.85f,0.3f).SetEase(Ease.InCirc);
+            _mixer.DOSetFloat("Muffle", 0.05f, 0.5f);
             StartCoroutine(ShakeWithDelay());
         }
         else
@@ -101,6 +104,7 @@ public class CameraController : MonoBehaviour
             cam.DOOrthoSize(defaultOrtho,0.3f).SetEase(Ease.OutQuad);
             LeftHand.DOMove(defaultLefttHandPos,0.5f).SetEase(Ease.OutExpo);
             RightHand.DOMove(defaultRightHandPos,0.5f).SetEase(Ease.OutExpo);
+            _mixer.DOSetFloat("Muffle", 1, 0.5f);
         }
     }
 

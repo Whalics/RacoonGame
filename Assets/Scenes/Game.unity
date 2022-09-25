@@ -2376,6 +2376,7 @@ MonoBehaviour:
   upOrtho: 6
   inTrash: 0
   hiding: 0
+  _mixer: {fileID: 24100000, guid: e51e8eb74cfc27c47bf3b37ad8fbb82b, type: 2}
   LeftHand: {fileID: 528487915}
   RightHand: {fileID: 495184203}
   rightHidingHandPos: {x: 6.7, y: -2.8}
