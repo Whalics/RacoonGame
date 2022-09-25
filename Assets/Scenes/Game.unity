@@ -830,13 +830,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   susmeter: 0
-  stomachGrowlInfluence: 0
+  susResetDuration: 0
+  stomachGrowlInfluence: 3
   quietTrashInfluence: 0
   loudTrashInfluence: 0
   hideInfluence: 0
   tummyTimer: 20
   growled: 0
   locationindex: 0
+  cameracontroller: {fileID: 0}
 --- !u!4 &1247485336
 Transform:
   m_ObjectHideFlags: 0
